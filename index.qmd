@@ -1,0 +1,7 @@
+---
+title: "micabo"
+---
+
+Hi, welcome to my site.
+
+I will be building this website using [quarto](https://quarto.org/docs/websites) but right now there's nothing here. Please come back later!
