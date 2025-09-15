@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "micabo",
+    "section": "",
+    "text": "Hi, welcome to my site.\nI will be building this website using quarto but right now there’s nothing here. Please come back later!"
+  }
+]
