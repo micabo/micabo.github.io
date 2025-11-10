@@ -6,7 +6,7 @@ Hi, welcome to my site.
 
 I will be building this website using [quarto](https://quarto.org/docs/websites).
 My intent is to write blog posts on things I stumble upon and find interesting.
-These posts may just be a write-up of the material for myself.
+These posts may just be a write-up of the material for myself, but most of the time there will be a didactic element to the posts.
 
 You can also check out my GitHub [here](https://github.com/micabo).
 No, it's not very up-to-date and does not contain many projects since my programming is mostly done professionally.

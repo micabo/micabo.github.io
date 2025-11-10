@@ -1,0 +1,141 @@
+---
+title: "Character Encoding"
+description: "Introduction to character encoding"
+categories:
+    - "Computer Science"
+date: 2025-11-11
+format: html
+---
+
+Computers work with **bits** (binary digits) - zeroes and ones - how can they work with text?
+
+Well, it's quite simple - computers know how to represent numbers.
+So we'll just assign a number to each character.
+This process is called 'encoding'.
+
+Is it quite so simple?
+Well no, there's a bit more to it.
+Let's find out.
+
+
+## ASCII
+
+The most influential character encoding might be ASCII (American Standard Code for Information Interchange, pronounced 'asky').
+The ASCII encoding is a 7-bit encoding i.e. it maps the numbers from 0 to 127 ($2^7-1$) to a character.
+
+```{python}
+print(f"decimal - bit-pattern - character")
+for i in range(89, 100):
+    print(f"{i:^7} - {format(i, '07b'):^11} - {chr(i):^9}")
+```
+
+The ASCII encoding contains all characters used in the English language and additional _control_ characters such as e.g. carriage return.
+Nowadays, using 7-bits seems a bit odd, but this happened before a byte was standardized to 8-bits.
+Today the ASCII encoding looks the same, just with an additional '0' prefixed to each bit-pattern.
+
+
+## Extended ASCII Encodings
+
+As most computers work with an 8-bit byte, people started to use the additional bit
+(=> 128 additional bit-patterns) to encode more characters.
+In western Europe this resulted in encodings like Windows-1252 or Latin-1 to represent letters such as Ü (`11011100` in Latin-1).
+In other parts of the world, other language-specific encodings arose (see for example
+[TSCII](https://en.wikipedia.org/wiki/Tamil_Script_Code_for_Information_Interchange) etc.).
+This lead to a confusing situation where the same bit-pattern could stand for very different things.
+
+```{python}
+char_as_byte = "Ü".encode(encoding="latin_1")
+char_as_int = int.from_bytes(char_as_byte, byteorder="little")
+# note: byteorder does not matter for this encoding
+print(f"Ü is {char_as_int:08b}")
+```
+
+
+## Unicode
+
+Unicode is a universal encoding that supports all languages, symbols and even emojis.
+It maps each character to an abstract _unicode code point_ often denoted `U+<hexadeximal number>`.
+
+```{python}
+characters = ['A', 'Ü', '😆']
+print("code point - character")
+for char in characters:
+    cp = f"U+{ord(char):X}"
+    print(f'{cp:^10}{char:^9}')
+```
+
+So why do I call it an _abstract_ code point?
+While the code point is a number, it does not specify how many bits are used to represent the actual characters.
+This is done by the Unicode Transformation Format (**UTF**).
+There are three commonly used formats: UTF-8, UTF-16 and UTF-32.
+The number signifies the minimal number of bits that is used to represent a character.
+These formats are 'multi-byte' formats i.e. they may use more than one byte to represent a character.
+UTF-32 always uses 4 bytes, UTF-16 uses at least 2 bytes but up to four and UTF-8 uses at least one byte but up to four.
+UTF-32 is pretty simple to understand as it always uses 4 bytes to represent a character.
+The only issue arising here is byte order, which we'll talk about later.
+
+
+### UTF-8
+
+The most commonly used Unicode Transformation Format is **UTF-8**,
+which uses at least 8 bits and is compatible with ASCII in the lower 128 characters
+(this is how I got away using regular Python strings which are UTF-8 encoded in the ASCII section).
+
+It works by encoding the number of following bytes in the first byte (start byte).
+If a byte starts with:
+
+- `0` is not followed by any more bytes => ASCII character
+- `110` followed by one more byte
+- `1110` followed by two more bytes
+- `11110` followed by three more bytes
+
+The follow-bytes start with `10`.
+
+The 'payload' in an UTF-8 encoded character is everything except the start and follow byte prefixes.
+Let's look at some examples:
+
+The Character 'A' would be <span style="color:blue">0</span>1000001 (as in ASCII).
+Payload = 100 0001 = U+41.
+
+The Character 'Ü' is encoded as
+<span style="color:blue">110</span>00011
+<span style="color:blue">10</span>011100
+
+Payload = 1101 1100 = U+DC.
+
+The emoji 😅 is encoded as
+<span style="color:blue">11110</span>000
+<span style="color:blue">10</span>011111
+<span style="color:blue">10</span>011000
+<span style="color:blue">10</span>000101
+
+Payload = 0001 1111 0110 0000 0101 = U+1F606.
+
+
+### Byte-Order
+
+One (last?) complication arises when using multiple bytes to represent a character:
+Which byte should be the first byte (in a message, in storage)?
+Computers and protocols use different byte-orders - so-called endianness.
+
+In a little-endian system the character 'Ü' in UTF-8 encoding would be represented as
+`1100 1101`, while it would be represented as `1101 1100` in a big-endian system.
+(In my opinion the terms are a bit confusing, imho it should be call 'little-startian' 
+because we start with the lowest-value byte.)
+
+Some programs add a byte-order mark (**BOM**) to the start of their files.
+The mark is `0xFEFF`.
+Should a program receive a BOM as `FF` and `FE` it would know that the bytes are transmitted in little-endian order.
+However, this is not recommended for UTF-8 encoded files, where it can be detected without BOM anyway.
+
+
+## Summary
+
+So to sum up, an encoding is a mapping of characters to numbers (the reverse is decoding).
+Unicode is a universal encoding that has significantly simplifed working
+with character encodings with UTF-8 becoming the standard format on the web.
+
+One final thing I learned about Unicode is that there actually are undefined regions
+in the standard, reserved for private use [Private Use Areas](https://en.wikipedia.org/wiki/Private_Use_Areas).
+So, not entirely unversal after all...
+I guess things stay interesting!
