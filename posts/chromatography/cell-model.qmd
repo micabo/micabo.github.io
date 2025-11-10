@@ -13,7 +13,7 @@ jupyter: python3
 
 Chromatography is a process to seperate a mixture of substances into it's components.
 This is done by transporting the mixture of substances through a stationary phase ('resistance') using a mobile phase ('driver').
-Components that interact more strongly with the stationary phase will be held back longer than those that interact less, leading to a separation.
+Components that interact more strongly with the stationary phase will be held back longer than those that interact less, leading to separation.
 
 It is used to e.g. determine the amount of impurities in a pharmaceutical product.
 Of the many different techniques of chromatography, HPLC (high-pressure liquid chromatography) and GC (gas chromatography) are the most prevalent.
