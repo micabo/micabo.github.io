@@ -6,6 +6,7 @@ categories:
     - "Computer Science"
 date: 2025-11-11
 format: html
+freeze: true
 ---
 
 The first time I dug deeper into this topic was when I encountered a program that would

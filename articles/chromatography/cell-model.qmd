@@ -6,6 +6,7 @@ categories:
     - Simulation
 format: html
 date: 2025-11-10
+freeze: true
 jupyter: python3
 ---
 

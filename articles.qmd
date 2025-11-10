@@ -4,6 +4,7 @@ listing:
     contents: articles
     type: default
     categories: true
+    sort: "date desc"
     sort-ui: [title, date]
     filter-ui: [title, date]
 ---
