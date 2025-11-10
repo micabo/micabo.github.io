@@ -1,7 +1,12 @@
 ---
-title: "micabo"
+title: "Welcome"
 ---
 
 Hi, welcome to my site.
 
-I will be building this website using [quarto](https://quarto.org/docs/websites) but right now there's nothing here. Please come back later!
+I will be building this website using [quarto](https://quarto.org/docs/websites).
+My intent is to write blog posts on things I stumble upon and find interesting.
+These posts may just be a write-up of the material for myself.
+
+You can also check out my GitHub [here](https://github.com/micabo).
+No, it's not very up-to-date and does not contain many projects since my programming is mostly done professionally.

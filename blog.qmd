@@ -1,0 +1,11 @@
+---
+title: "Blog"
+listing:
+    contents: posts
+    type: default
+    categories: true
+    sort-ui: [title, date]
+    filter-ui: [title, date]
+---
+
+I hope you enjoy this content!

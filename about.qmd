@@ -1,5 +1,11 @@
 ---
-title: "About"
+title: About
+about:
+    template: jolla
+    links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/micabo
 ---
 
-About this site
+More to come... 
