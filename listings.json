@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/computer-science/character-encoding.html",
       "/posts/chromatography/cell-model.html"
     ]
   }
