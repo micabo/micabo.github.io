@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-11-11">
-<meta name="description" content="Introduction to character encoding">
 
-<title>Character Encoding – micabo</title>
+<title>Articles – micabo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,62 +20,29 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-99258d85ffddbd9841977770f8edb96b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-99258d85ffddbd9841977770f8edb96b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,6 +70,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] }],
+      
+      searchColumns: ["listing-title","listing-date"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -136,7 +130,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -146,9 +140,9 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">micabo</span>
     </a>
   </div>
@@ -159,15 +153,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
-<span class="menu-text">Blog</span></a>
+    <a class="nav-link active" href="./articles.html" aria-current="page"> 
+<span class="menu-text">Articles</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -182,48 +176,21 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#ascii" id="toc-ascii" class="nav-link active" data-scroll-target="#ascii">ASCII</a></li>
-  <li><a href="#extended-ascii-encodings" id="toc-extended-ascii-encodings" class="nav-link" data-scroll-target="#extended-ascii-encodings">Extended ASCII Encodings</a></li>
-  <li><a href="#unicode" id="toc-unicode" class="nav-link" data-scroll-target="#unicode">Unicode</a>
-  <ul class="collapse">
-  <li><a href="#utf-8" id="toc-utf-8" class="nav-link" data-scroll-target="#utf-8">UTF-8</a></li>
-  <li><a href="#byte-order" id="toc-byte-order" class="nav-link" data-scroll-target="#byte-order">Byte-Order</a></li>
-  </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  </ul>
-</nav>
-    </div>
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q2hlbWlzdHJ5">Chemistry <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29tcHV0ZXIlMjBTY2llbmNl">Computer Science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U2ltdWxhdGlvbg==">Simulation <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Character Encoding</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Computer Science</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    Introduction to character encoding
-  </div>
+<h1 class="title">Articles</h1>
 </div>
+
 
 
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">November 11, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -233,97 +200,94 @@ window.Quarto = {
 </header>
 
 
-<p>Computers work with <strong>bits</strong> (binary digits) - zeroes and ones - how can they work with text?</p>
-<p>Well, it’s quite simple - computers know how to represent numbers. So we’ll just assign a number to each character. This process is called ‘encoding’.</p>
-<p>Is it quite so simple? Well no, there’s a bit more to it. Let’s find out.</p>
-<section id="ascii" class="level2">
-<h2 class="anchored" data-anchor-id="ascii">ASCII</h2>
-<p>The most influential character encoding might be ASCII (American Standard Code for Information Interchange, pronounced ‘asky’). The ASCII encoding is a 7-bit encoding i.e.&nbsp;it maps the numbers from 0 to 127 (<span class="math inline">\(2^7-1\)</span>) to a character.</p>
-<div id="74398fae" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"decimal - bit-pattern - character"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">89</span>, <span class="dv">100</span>):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">:^7}</span><span class="ss"> - </span><span class="sc">{</span><span class="bu">format</span>(i, <span class="st">'07b'</span>)<span class="sc">:^11}</span><span class="ss"> - </span><span class="sc">{</span><span class="bu">chr</span>(i)<span class="sc">:^9}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>decimal - bit-pattern - character
-  89    -   1011001   -     Y    
-  90    -   1011010   -     Z    
-  91    -   1011011   -     [    
-  92    -   1011100   -     \    
-  93    -   1011101   -     ]    
-  94    -   1011110   -     ^    
-  95    -   1011111   -     _    
-  96    -   1100000   -     `    
-  97    -   1100001   -     a    
-  98    -   1100010   -     b    
-  99    -   1100011   -     c    </code></pre>
-</div>
-</div>
-<p>The ASCII encoding contains all characters used in the English language and additional <em>control</em> characters such as e.g.&nbsp;carriage return. Nowadays, using 7-bits seems a bit odd, but this happened before a byte was standardized to 8-bits. Today the ASCII encoding looks the same, just with an additional ‘0’ prefixed to each bit-pattern.</p>
-</section>
-<section id="extended-ascii-encodings" class="level2">
-<h2 class="anchored" data-anchor-id="extended-ascii-encodings">Extended ASCII Encodings</h2>
-<p>As most computers work with an 8-bit byte, people started to use the additional bit (=&gt; 128 additional bit-patterns) to encode more characters. In western Europe this resulted in encodings like Windows-1252 or Latin-1 to represent letters such as Ü (<code>11011100</code> in Latin-1). In other parts of the world, other language-specific encodings arose (see for example <a href="https://en.wikipedia.org/wiki/Tamil_Script_Code_for_Information_Interchange">TSCII</a> etc.). This lead to a confusing situation where the same bit-pattern could stand for very different things.</p>
-<div id="5211bb04" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>char_as_byte <span class="op">=</span> <span class="st">"Ü"</span>.encode(encoding<span class="op">=</span><span class="st">"latin_1"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>char_as_int <span class="op">=</span> <span class="bu">int</span>.from_bytes(char_as_byte, byteorder<span class="op">=</span><span class="st">"little"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># note: byteorder does not matter for this encoding</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ü is </span><span class="sc">{</span>char_as_int<span class="sc">:08b}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Ü is 11011100</code></pre>
-</div>
-</div>
-</section>
-<section id="unicode" class="level2">
-<h2 class="anchored" data-anchor-id="unicode">Unicode</h2>
-<p>Unicode is a universal encoding that supports all languages, symbols and even emojis. It maps each character to an abstract <em>unicode code point</em> often denoted <code>U+&lt;hexadeximal number&gt;</code>.</p>
-<div id="16e52ebc" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>characters <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'Ü'</span>, <span class="st">'😆'</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"code point - character"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> char <span class="kw">in</span> characters:</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    cp <span class="op">=</span> <span class="ss">f"U+</span><span class="sc">{</span><span class="bu">ord</span>(char)<span class="sc">:X}</span><span class="ss">"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>cp<span class="sc">:^10}{</span>char<span class="sc">:^9}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>code point - character
-   U+41       A    
-   U+DC       Ü    
- U+1F606      😆    </code></pre>
-</div>
-</div>
-<p>So why do I call it an <em>abstract</em> code point? While the code point is a number, it does not specify how many bits are used to represent the actual characters. This is done by the Unicode Transformation Format (<strong>UTF</strong>). There are three commonly used formats: UTF-8, UTF-16 and UTF-32. The number signifies the minimal number of bits that is used to represent a character. These formats are ‘multi-byte’ formats i.e.&nbsp;they may use more than one byte to represent a character. UTF-32 always uses 4 bytes, UTF-16 uses at least 2 bytes but up to four and UTF-8 uses at least one byte but up to four. UTF-32 is pretty simple to understand as it always uses 4 bytes to represent a character. The only issue arising here is byte order, which we’ll talk about later.</p>
-<section id="utf-8" class="level3">
-<h3 class="anchored" data-anchor-id="utf-8">UTF-8</h3>
-<p>The most commonly used Unicode Transformation Format is <strong>UTF-8</strong>, which uses at least 8 bits and is compatible with ASCII in the lower 128 characters (this is how I got away using regular Python strings which are UTF-8 encoded in the ASCII section).</p>
-<p>It works by encoding the number of following bytes in the first byte (start byte). If a byte starts with:</p>
-<ul>
-<li><code>0</code> is not followed by any more bytes =&gt; ASCII character</li>
-<li><code>110</code> followed by one more byte</li>
-<li><code>1110</code> followed by two more bytes</li>
-<li><code>11110</code> followed by three more bytes</li>
-</ul>
-<p>The follow-bytes start with <code>10</code>.</p>
-<p>The ‘payload’ in an UTF-8 encoded character is everything except the start and follow byte prefixes. Let’s look at some examples:</p>
-<p>The Character ‘A’ would be <span style="color:blue">0</span>1000001 (as in ASCII). Payload = 100 0001 = U+41.</p>
-<p>The Character ‘Ü’ is encoded as <span style="color:blue">110</span>00011 <span style="color:blue">10</span>011100</p>
-<p>Payload = 1101 1100 = U+DC.</p>
-<p>The emoji 😅 is encoded as <span style="color:blue">11110</span>000 <span style="color:blue">10</span>011111 <span style="color:blue">10</span>011000 <span style="color:blue">10</span>000101</p>
-<p>Payload = 0001 1111 0110 0000 0101 = U+1F606.</p>
-</section>
-<section id="byte-order" class="level3">
-<h3 class="anchored" data-anchor-id="byte-order">Byte-Order</h3>
-<p>One (last?) complication arises when using multiple bytes to represent a character: Which byte should be the first byte (in a message, in storage)? Computers and protocols use different byte-orders - so-called endianness.</p>
-<p>In a little-endian system the character ‘Ü’ in UTF-8 encoding would be represented as <code>1100 1101</code>, while it would be represented as <code>1101 1100</code> in a big-endian system. (In my opinion the terms are a bit confusing, imho it should be call ‘little-startian’ because we start with the lowest-value byte.)</p>
-<p>Some programs add a byte-order mark (<strong>BOM</strong>) to the start of their files. The mark is <code>0xFEFF</code>. Should a program receive a BOM as <code>FF</code> and <code>FE</code> it would know that the bytes are transmitted in little-endian order. However, this is not recommended for UTF-8 encoded files, where it can be detected without BOM anyway.</p>
-</section>
-</section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>So to sum up, an encoding is a mapping of characters to numbers (the reverse is decoding). Unicode is a universal encoding that has significantly simplifed working with character encodings with UTF-8 becoming the standard format on the web.</p>
-<p>One final thing I learned about Unicode is that there actually are undefined regions in the standard, reserved for private use <a href="https://en.wikipedia.org/wiki/Private_Use_Areas">Private Use Areas</a>. So, not entirely unversal after all… I guess things stay interesting!</p>
+<p>I hope you enjoy this content!</p>
 
 
-</section>
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="Q29tcHV0ZXIlMjBTY2llbmNl" data-listing-date-sort="1762815600000" data-listing-file-modified-sort="1762850273653" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="890">
+<div class="thumbnail"><a href="./articles/computer-science/character-encoding.html" class="no-external">
+
+<img loading="lazy" src="./articles/computer-science/character-encoding-img/encoding.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./articles/computer-science/character-encoding.html" class="no-external">Character Encoding</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q29tcHV0ZXIlMjBTY2llbmNl'); return false;">Computer Science</div>
+
+</div>
+<div class="delink listing-description"><a href="./articles/computer-science/character-encoding.html" class="no-external">
+<p>Introduction to character encoding</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./articles/computer-science/character-encoding.html" class="no-external">
+<div class="listing-date">
+Nov 11, 2025
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Q2hlbWlzdHJ5JTJDU2ltdWxhdGlvbg==" data-listing-date-sort="1762729200000" data-listing-file-modified-sort="1762817663382" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1610">
+<div class="thumbnail"><a href="./articles/chromatography/cell-model.html" class="no-external">
+
+<p class="card-img-top"><img src="articles/chromatography/cell-model-img/cell-model.jpg"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./articles/chromatography/cell-model.html" class="no-external">The Cell Model of Chromatography</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2hlbWlzdHJ5'); return false;">Chemistry</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('U2ltdWxhdGlvbg=='); return false;">Simulation</div>
+
+</div>
+<div class="delink listing-description"><a href="./articles/chromatography/cell-model.html" class="no-external">
+<p>Basic exploration of the cell model for chromatography</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./articles/chromatography/cell-model.html" class="no-external">
+<div class="listing-date">
+Nov 10, 2025
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

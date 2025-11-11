@@ -1,8 +1,8 @@
 [
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
+    "objectID": "articles.html",
+    "href": "articles.html",
+    "title": "Articles",
     "section": "",
     "text": "I hope you enjoy this content!\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nCharacter Encoding\n\n\n\nComputer Science\n\n\n\nIntroduction to character encoding\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nThe Cell Model of Chromatography\n\n\n\nChemistry\n\nSimulation\n\n\n\nBasic exploration of the cell model for chromatography\n\n\n\n\n\nNov 10, 2025\n\n\n\n\n\nNo matching items"
   },
@@ -11,95 +11,102 @@
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "Hi, welcome to my site.\nI will be building this website using quarto. My intent is to write blog posts on things I stumble upon and find interesting. These posts may just be a write-up of the material for myself, but most of the time there will be a didactic element to the posts.\nYou can also check out my GitHub here. No, it’s not very up-to-date and does not contain many projects since my programming is mostly done professionally."
+    "text": "Hi, welcome to my site.\nI will be building this website using quarto. My intent is to write short articles on things I stumble upon and find interesting. These articles may just be a write-up of the material for myself, but most of the time there will be a didactic element to them.\nYou can also check out my GitHub here. No, it’s not very up-to-date and does not contain many projects since my programming is mostly done professionally."
   },
   {
-    "objectID": "posts/computer-science/character-encoding.html",
-    "href": "posts/computer-science/character-encoding.html",
+    "objectID": "articles/computer-science/character-encoding.html",
+    "href": "articles/computer-science/character-encoding.html",
     "title": "Character Encoding",
     "section": "",
-    "text": "Computers work with bits (binary digits) - zeroes and ones - how can they work with text?\nWell, it’s quite simple - computers know how to represent numbers. So we’ll just assign a number to each character. This process is called ‘encoding’.\nIs it quite so simple? Well no, there’s a bit more to it. Let’s find out."
+    "text": "The first time I dug deeper into this topic was when I encountered a program that would consistently print weird characters when reading data from a file. In effect, this was pretty similar to opening a UTF-8 encoded file in Microsoft Excel by double clicking. It will not detect the encoding correctly (assume e.g. cp1252) if the special characters appear sparingly and late in the file. Anyway, that was an interesting rabbit hole of encodings and byte-order marks to explore. I hope you enjoy this short article."
   },
   {
-    "objectID": "posts/computer-science/character-encoding.html#ascii",
-    "href": "posts/computer-science/character-encoding.html#ascii",
+    "objectID": "articles/computer-science/character-encoding.html#everything-is-numbers",
+    "href": "articles/computer-science/character-encoding.html#everything-is-numbers",
+    "title": "Character Encoding",
+    "section": "Everything is Numbers",
+    "text": "Everything is Numbers\nComputers work with bits (binary digits) - zeroes and ones - how can they work with text?\nWell, it’s quite simple - computers know how to represent numbers. So we’ll just assign a number to each character. This process is called ‘encoding’.\nIs it quite so simple? Well no, there’s a bit more to it. Let’s find out."
+  },
+  {
+    "objectID": "articles/computer-science/character-encoding.html#ascii",
+    "href": "articles/computer-science/character-encoding.html#ascii",
     "title": "Character Encoding",
     "section": "ASCII",
     "text": "ASCII\nThe most influential character encoding might be ASCII (American Standard Code for Information Interchange, pronounced ‘asky’). The ASCII encoding is a 7-bit encoding i.e. it maps the numbers from 0 to 127 (\\(2^7-1\\)) to a character.\n\nprint(f\"decimal - bit-pattern - character\")\nfor i in range(89, 100):\n    print(f\"{i:^7} - {format(i, '07b'):^11} - {chr(i):^9}\")\n\ndecimal - bit-pattern - character\n  89    -   1011001   -     Y    \n  90    -   1011010   -     Z    \n  91    -   1011011   -     [    \n  92    -   1011100   -     \\    \n  93    -   1011101   -     ]    \n  94    -   1011110   -     ^    \n  95    -   1011111   -     _    \n  96    -   1100000   -     `    \n  97    -   1100001   -     a    \n  98    -   1100010   -     b    \n  99    -   1100011   -     c    \n\n\nThe ASCII encoding contains all characters used in the English language and additional control characters such as e.g. carriage return. Nowadays, using 7-bits seems a bit odd, but this happened before a byte was standardized to 8-bits. Today the ASCII encoding looks the same, just with an additional ‘0’ prefixed to each bit-pattern."
   },
   {
-    "objectID": "posts/computer-science/character-encoding.html#extended-ascii-encodings",
-    "href": "posts/computer-science/character-encoding.html#extended-ascii-encodings",
+    "objectID": "articles/computer-science/character-encoding.html#extended-ascii-encodings",
+    "href": "articles/computer-science/character-encoding.html#extended-ascii-encodings",
     "title": "Character Encoding",
     "section": "Extended ASCII Encodings",
     "text": "Extended ASCII Encodings\nAs most computers work with an 8-bit byte, people started to use the additional bit (=&gt; 128 additional bit-patterns) to encode more characters. In western Europe this resulted in encodings like Windows-1252 or Latin-1 to represent letters such as Ü (11011100 in Latin-1). In other parts of the world, other language-specific encodings arose (see for example TSCII etc.). This lead to a confusing situation where the same bit-pattern could stand for very different things.\n\nchar_as_byte = \"Ü\".encode(encoding=\"latin_1\")\nchar_as_int = int.from_bytes(char_as_byte, byteorder=\"little\")\n# note: byteorder does not matter for this encoding\nprint(f\"Ü is {char_as_int:08b}\")\n\nÜ is 11011100"
   },
   {
-    "objectID": "posts/computer-science/character-encoding.html#unicode",
-    "href": "posts/computer-science/character-encoding.html#unicode",
+    "objectID": "articles/computer-science/character-encoding.html#unicode",
+    "href": "articles/computer-science/character-encoding.html#unicode",
     "title": "Character Encoding",
     "section": "Unicode",
     "text": "Unicode\nUnicode is a universal encoding that supports all languages, symbols and even emojis. It maps each character to an abstract unicode code point often denoted U+&lt;hexadeximal number&gt;.\n\ncharacters = ['A', 'Ü', '😆']\nprint(\"code point - character\")\nfor char in characters:\n    cp = f\"U+{ord(char):X}\"\n    print(f'{cp:^10}{char:^9}')\n\ncode point - character\n   U+41       A    \n   U+DC       Ü    \n U+1F606      😆    \n\n\nSo why do I call it an abstract code point? While the code point is a number, it does not specify how many bits are used to represent the actual characters. This is done by the Unicode Transformation Format (UTF). There are three commonly used formats: UTF-8, UTF-16 and UTF-32. The number signifies the minimal number of bits that is used to represent a character. These formats are ‘multi-byte’ formats i.e. they may use more than one byte to represent a character. UTF-32 always uses 4 bytes, UTF-16 uses at least 2 bytes but up to four and UTF-8 uses at least one byte but up to four. UTF-32 is pretty simple to understand as it always uses 4 bytes to represent a character. The only issue arising here is byte order, which we’ll talk about later.\n\nUTF-8\nThe most commonly used Unicode Transformation Format is UTF-8, which uses at least 8 bits and is compatible with ASCII in the lower 128 characters (this is how I got away using regular Python strings which are UTF-8 encoded in the ASCII section).\nIt works by encoding the number of following bytes in the first byte (start byte). If a byte starts with:\n\n0 is not followed by any more bytes =&gt; ASCII character\n110 followed by one more byte\n1110 followed by two more bytes\n11110 followed by three more bytes\n\nThe follow-bytes start with 10.\nThe ‘payload’ in an UTF-8 encoded character is everything except the start and follow byte prefixes. Let’s look at some examples:\nThe Character ‘A’ would be 01000001 (as in ASCII). Payload = 100 0001 = U+41.\nThe Character ‘Ü’ is encoded as 11000011 10011100\nPayload = 1101 1100 = U+DC.\nThe emoji 😅 is encoded as 11110000 10011111 10011000 10000101\nPayload = 0001 1111 0110 0000 0101 = U+1F606.\n\n\nByte-Order\nOne (last?) complication arises when using multiple bytes to represent a character: Which byte should be the first byte (in a message, in storage)? Computers and protocols use different byte-orders - so-called endianness.\nIn a little-endian system the character ‘Ü’ in UTF-8 encoding would be represented as 1100 1101, while it would be represented as 1101 1100 in a big-endian system. (In my opinion the terms are a bit confusing, imho it should be call ‘little-startian’ because we start with the lowest-value byte.)\nSome programs add a byte-order mark (BOM) to the start of their files. The mark is 0xFEFF. Should a program receive a BOM as FF and FE it would know that the bytes are transmitted in little-endian order. However, this is not recommended for UTF-8 encoded files, where it can be detected without BOM anyway."
   },
   {
-    "objectID": "posts/computer-science/character-encoding.html#summary",
-    "href": "posts/computer-science/character-encoding.html#summary",
+    "objectID": "articles/computer-science/character-encoding.html#summary",
+    "href": "articles/computer-science/character-encoding.html#summary",
     "title": "Character Encoding",
     "section": "Summary",
-    "text": "Summary\nSo to sum up, an encoding is a mapping of characters to numbers (the reverse is decoding). Unicode is a universal encoding that has significantly simplifed working with character encodings with UTF-8 becoming the standard format on the web.\nOne final thing I learned about Unicode is that there actually are undefined regions in the standard, reserved for private use Private Use Areas. So, not entirely unversal after all… I guess things stay interesting!"
+    "text": "Summary\nSo to sum up, an encoding is a mapping of characters to numbers (the reverse is decoding). Unicode is a universal encoding that has significantly simplifed working with character encodings with UTF-8 becoming the standard format on the web. Knowing the encoding of a file is crucial for making sense of its contents.\nOne final thing I learned about Unicode is that there actually are undefined regions in the standard, reserved for private use Private Use Areas. So, not entirely unversal after all… I guess things stay interesting!\nWe did not go into any other topics regarding text representation on computers. C’s NULL-terminated strings, Pascals fixed-length strings and other concepts like compression using Huffman coding etc. Maybe we’ll get there another time."
   },
   {
-    "objectID": "posts/chromatography/cell-model.html",
-    "href": "posts/chromatography/cell-model.html",
+    "objectID": "articles/chromatography/cell-model.html",
+    "href": "articles/chromatography/cell-model.html",
     "title": "The Cell Model of Chromatography",
     "section": "",
     "text": "Chromatography is a process to seperate a mixture of substances into it’s components. This is done by transporting the mixture of substances through a stationary phase (‘resistance’) using a mobile phase (‘driver’). Components that interact more strongly with the stationary phase will be held back longer than those that interact less, leading to separation.\nIt is used to e.g. determine the amount of impurities in a pharmaceutical product. Of the many different techniques of chromatography, HPLC (high-pressure liquid chromatography) and GC (gas chromatography) are the most prevalent."
   },
   {
-    "objectID": "posts/chromatography/cell-model.html#chromatography",
-    "href": "posts/chromatography/cell-model.html#chromatography",
+    "objectID": "articles/chromatography/cell-model.html#chromatography",
+    "href": "articles/chromatography/cell-model.html#chromatography",
     "title": "The Cell Model of Chromatography",
     "section": "",
     "text": "Chromatography is a process to seperate a mixture of substances into it’s components. This is done by transporting the mixture of substances through a stationary phase (‘resistance’) using a mobile phase (‘driver’). Components that interact more strongly with the stationary phase will be held back longer than those that interact less, leading to separation.\nIt is used to e.g. determine the amount of impurities in a pharmaceutical product. Of the many different techniques of chromatography, HPLC (high-pressure liquid chromatography) and GC (gas chromatography) are the most prevalent."
   },
   {
-    "objectID": "posts/chromatography/cell-model.html#cell-model",
-    "href": "posts/chromatography/cell-model.html#cell-model",
+    "objectID": "articles/chromatography/cell-model.html#cell-model",
+    "href": "articles/chromatography/cell-model.html#cell-model",
     "title": "The Cell Model of Chromatography",
     "section": "Cell Model",
     "text": "Cell Model\nWe imagine the stationary (i.e. the column) and the mobile phase to consist of cells. Each cell of the stationary phase is in contact with one cell from the mobile phase. We distribute the molecules between the stationary and mobile phase according to the equilibrium constant. When this is done, we move the mobile phase cells ‘down one cell’ such that they are in contact with the next cell of the stationary phase. Note: we use zero-based indexing for the cells (as does Python), so the first cell is cell 0.\n\n\n\nCell Model"
   },
   {
-    "objectID": "posts/chromatography/cell-model.html#equilibrium",
-    "href": "posts/chromatography/cell-model.html#equilibrium",
+    "objectID": "articles/chromatography/cell-model.html#equilibrium",
+    "href": "articles/chromatography/cell-model.html#equilibrium",
     "title": "The Cell Model of Chromatography",
     "section": "Equilibrium",
     "text": "Equilibrium\nThe molecules will partition between their bound and free state according to an equilibrium constant \\(K\\). Since we will assume all the cells to be the same size (i.e. have the same volume) we can calculate with amounts of molecules directly and do not need to bother with concentrations.\n\\[K = \\frac{c_{bound}}{c_{free}} = \\frac{n_{bound}/V_{cell}}{n_{free}/V_{cell}} = \\frac{n_{bound}}{n_{free}}\\]\nComputationally, it is much easier to reformulate the equilibrium constant as a fraction of bound molecules give the total number of molecules.\n\\[f_{bound} = \\frac{K}{1 + K} \\cdot n_{total}\\]\nThe number of free molecules is then simply \\(n_{free} = n_{total} - n_{bound}\\)."
   },
   {
-    "objectID": "posts/chromatography/cell-model.html#setup",
-    "href": "posts/chromatography/cell-model.html#setup",
+    "objectID": "articles/chromatography/cell-model.html#setup",
+    "href": "articles/chromatography/cell-model.html#setup",
     "title": "The Cell Model of Chromatography",
     "section": "Setup",
     "text": "Setup\n\nimport numpy as np\nimport matplotlib.pyplot as plt"
   },
   {
-    "objectID": "posts/chromatography/cell-model.html#single-compound",
-    "href": "posts/chromatography/cell-model.html#single-compound",
+    "objectID": "articles/chromatography/cell-model.html#single-compound",
+    "href": "articles/chromatography/cell-model.html#single-compound",
     "title": "The Cell Model of Chromatography",
     "section": "Single Compound",
     "text": "Single Compound\n\n# Define parameters\nn_cells = 100\nn_steps = 1_000\nn_molecules = 100_000\nK = 4\n\n# Reformat K to a fractional entity\nfrac_bound = K / (1 + K)\n\n# Initial state (zero everywhere)\nstationary_phase = np.zeros(n_cells)\nmobile_phase = np.zeros(n_cells + n_steps)\n\n# Loading of mobile phase in cell just before the stationary phase\nmobile_phase[n_cells] = n_molecules\n\nfor step in range(1, n_steps + 1):\n    # Equilibration\n    for cell in range(n_cells):\n        n_tot = stationary_phase[cell] + mobile_phase[cell + step]\n        n_bound = np.floor(n_tot * frac_bound)\n        n_free = n_tot - n_bound\n        stationary_phase[cell] = n_bound\n        mobile_phase[cell + step] = n_free\n\nplt.plot(mobile_phase)\nplt.xlim(0, n_steps)\nplt.show()\n\n\n\n\n\n\n\n\n\nfrom scipy.stats import norm\n\nx = np.linspace(200, 800, 600)\ny = n_molecules * norm.pdf(x, loc=496, scale=45)\n\nplt.plot(mobile_phase, label=\"Simulation\")\nplt.plot(x, y, '--', label=\"Gaussian\")\nplt.xlim(0, n_steps)\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\n\n\nObservations\n\nThe simulation yields an almost symmetrical, gaussian-like peak."
   },
   {
-    "objectID": "posts/chromatography/cell-model.html#multiple-compounds",
-    "href": "posts/chromatography/cell-model.html#multiple-compounds",
+    "objectID": "articles/chromatography/cell-model.html#multiple-compounds",
+    "href": "articles/chromatography/cell-model.html#multiple-compounds",
     "title": "The Cell Model of Chromatography",
     "section": "Multiple Compounds",
     "text": "Multiple Compounds\nExtending the simulation to multiple compounds is straightforward. As all compounds are independent of each other, we can simply simulate each compound separately.\n\n# Define parameters\nn_cells = 100\nn_steps = 1_100\nn_molecules = [100_000, 100_000, 100_000]\nK = [2, 4, 7]\n\n# Reformat K to a fractional entity\nfrac_bound = [k / (1 + k) for k in K]\n\n# Initial state (zero everywhere)\nstationary_phase = [np.zeros(n_cells) for _ in K]\nmobile_phase = [np.zeros(n_cells + n_steps) for _ in K]\n\n# Loading of mobile phase in cell just before the stationary phase\nfor compound, n_mol in enumerate(n_molecules):\n    mobile_phase[compound][n_cells] = n_mol\n\nfor step in range(1, n_steps + 1):\n    # Equilibration\n    for cell in range(n_cells):\n        for compound, frac in enumerate(frac_bound):\n            n_tot = stationary_phase[compound][cell] + mobile_phase[compound][cell + step]\n            n_bound = np.floor(n_tot * frac)\n            n_free = n_tot - n_bound\n            stationary_phase[compound][cell] = n_bound\n            mobile_phase[compound][cell + step] = n_free\n\nfor mp in mobile_phase:\n    plt.plot(mp)\nplt.xlim(0, n_steps)\nplt.legend([f'K={k}' for k in K])\nplt.show()\n\n\n\n\n\n\n\n\n\nObservations\n\nRetention time increases with higher affinity to the stationary phase (column) - as we would expect.\nPeak width increases with increasing retention time.\nPeak height decreases with increasing retention time.\nOveral peak area stays the same (= number of molecules; can be verified by summing over the mobile phases).\n\nFor compounds with higher affinity to the stationary phase, we need more cells to transport the compound out of the column because each mobile phase cell will contain fewer molecules than in the case of low-stationary-phase affinity.\n\n\nColumn Dead Volume\n\n# Define parameters\nn_cells = 100\nn_steps = 250\nn_molecules = [300_000, 70_000, 23_000]\nK = [1, 0.1, 1e-2]\n\n# Reformat K to a fractional entity\nfrac_bound = [k / (1 + k) for k in K]\n\n# Initial state (zero everywhere)\nstationary_phase = [np.zeros(n_cells) for _ in K]\nmobile_phase = [np.zeros(n_cells + n_steps) for _ in K]\n\n# Loading of mobile phase in cell just before the stationary phase\nfor compound, n_mol in enumerate(n_molecules):\n    mobile_phase[compound][n_cells] = n_mol\n\nfor step in range(1, n_steps + 1):\n    # Equilibration\n    for cell in range(n_cells):\n        for compound, frac in enumerate(frac_bound):\n            n_tot = stationary_phase[compound][cell] + mobile_phase[compound][cell + step]\n            n_bound = np.floor(n_tot * frac)\n            n_free = n_tot - n_bound\n            stationary_phase[compound][cell] = n_bound\n            mobile_phase[compound][cell + step] = n_free\n\nfor mp in mobile_phase:\n    plt.plot(mp)\nplt.vlines([99], 0, 1e4, colors=\"red\", linestyles=\"dashed\")\nplt.xlim(90, n_steps)\nplt.ylim(-5, 1e4)\nplt.legend([f'K={k}' for k in K])\nplt.show()\n\n\n\n\n\n\n\n\n\nObservations\n\nThe lower the affinity to the stationary phase, the earlier the compound elutes.\nNote that the peak height do not increase because we use fewer molecules for the low-affinity compounds.\nThere is a lower bound to the retention time, which is given by the number of cells in the column - ‘dead volume’."
   },
   {
-    "objectID": "posts/chromatography/cell-model.html#decreasing-binding-affinity-with-increasing-bound-molecules",
-    "href": "posts/chromatography/cell-model.html#decreasing-binding-affinity-with-increasing-bound-molecules",
+    "objectID": "articles/chromatography/cell-model.html#decreasing-binding-affinity-with-increasing-bound-molecules",
+    "href": "articles/chromatography/cell-model.html#decreasing-binding-affinity-with-increasing-bound-molecules",
     "title": "The Cell Model of Chromatography",
     "section": "Decreasing Binding Affinity with Increasing Bound Molecules",
     "text": "Decreasing Binding Affinity with Increasing Bound Molecules\nLet’s suppose that the binding affinity of the stationary phase decreases with increasing number of bound molecules. Instead of using a ‘hard stop’ we will use a model where \\(K\\) decreases exponentially with ‘occupation’.\n\n# Define parameters\nn_cells = 100\nn_steps = 1_000\nn_molecules = 100_000\nK = 4\n\ndef frac_bound(n_bound):\n    # Reform K to a fractional entity - now also depending on loading\n    frac_bound = K / (np.exp(n_bound/30_000) + K)\n    return frac_bound\n\n# Initial state (zero everywhere)\nstationary_phase = np.zeros(n_cells)\nmobile_phase = np.zeros(n_cells + n_steps)\nmax_bound_molecules = np.zeros(n_steps + 1)\nsum_bound_molecules = np.zeros(n_steps + 1)\n\n# Loading of mobile phase in cell just before the stationary phase\nmobile_phase[n_cells] = n_molecules\n\nfor step in range(1, n_steps + 1):\n    # Record some information about the column\n    max_bound_molecules[step] = np.max(stationary_phase)\n    sum_bound_molecules[step] = np.sum(stationary_phase)\n    # Equilibration\n    for cell in range(n_cells):\n        n_bound_old = stationary_phase[cell]\n        n_tot = n_bound_old + mobile_phase[cell + step]\n        n_bound = np.floor(n_tot * frac_bound(n_bound_old))\n        n_free = n_tot - n_bound\n        stationary_phase[cell] = n_bound\n        mobile_phase[cell + step] = n_free\n\nplt.plot(mobile_phase)\nplt.xlim(0, n_steps)\nplt.show()\n\n# Let's also have a look at the maximum number of bound molecules\nplt.plot(max_bound_molecules, color=\"orange\")\nplt.plot(sum_bound_molecules, color=\"green\", linestyle=\"dashed\")\nplt.title(\"Number of Bound Molecules\")\nplt.legend([\"max n_bound\", \"sum n_bound\"])\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nObservations\n\nDecreasing binding affinity leads to a tailing peak.\nDue to the way the simulation is run the initial loading of the column is very, very high. Let’s look at that in some more detail.\n\n\nplt.plot(max_bound_molecules, color=\"orange\")\nplt.plot(sum_bound_molecules, color=\"green\", linestyle=\"dashed\")\nplt.xlim(0, 100)\nplt.legend([\"max n_bound\", \"sum n_bound\"])\nplt.show()\n\n\n\n\n\n\n\n\nWe see the oscillating behaviour at the beginning. First there are no bound molecules so \\(f_{bound}\\) is high (0.8). In the next step the affinity is starkly decreased due to the high number of bound molecules. This is an issue in our model but does not affect the qualitative result. We can smooth this behaviour out a bit in a further iteration of the model.\n\n# Define parameters\nn_cells = 100\nn_steps = 1_000\nn_molecules = 100_000\nK = 4\n\ndef frac_bound(n_bound):\n    # Reform K to a fractional entity - now also depending on loading\n    frac_bound = K / (np.exp(n_bound/30_000) + K)\n    return frac_bound\n\n# Initial state (zero everywhere)\nstationary_phase = np.zeros(n_cells)\nmobile_phase = np.zeros(n_cells + n_steps)\nmax_bound_molecules = np.zeros(n_steps + 1)\nsum_bound_molecules = np.zeros(n_steps + 1)\n\n# Loading of mobile phase in cell just before the stationary phase\nmobile_phase[n_cells] = n_molecules\n\nfor step in range(1, n_steps + 1):\n    # Record some information about the column\n    max_bound_molecules[step] = np.max(stationary_phase)\n    sum_bound_molecules[step] = np.sum(stationary_phase)\n    # Equilibration\n    for cell in range(n_cells):\n        n_bound = stationary_phase[cell]\n        n_tot = n_bound + mobile_phase[cell + step]\n        n_bound_new = np.floor(n_tot * frac_bound(n_bound))\n        # Interate on n_bound until consistent (give us some leeway +/- 1 molecule)\n        while abs(n_bound_new - n_bound) &gt; 1:\n            n_bound = (n_bound_new + n_bound) / 2 # introduces some damping\n            n_bound_new = np.floor(n_tot * frac_bound(n_bound))\n        n_free = n_tot - n_bound\n        stationary_phase[cell] = n_bound\n        mobile_phase[cell + step] = n_free\n\nplt.plot(mobile_phase)\nplt.xlim(0, n_steps)\nplt.show()\n\n# Let's also have a look at the maximum number of bound molecules\nplt.plot(max_bound_molecules, color=\"orange\")\nplt.plot(sum_bound_molecules, color=\"green\", linestyle=\"dashed\")\nplt.legend([\"max n_bound\", \"sum n_bound\"])\nplt.title(\"Number of Bound Molecules\")\nplt.xlim(0, 100)\nplt.show()"

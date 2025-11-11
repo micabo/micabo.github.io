@@ -1,9 +1,9 @@
 [
   {
-    "listing": "/blog.html",
+    "listing": "/articles.html",
     "items": [
-      "/posts/computer-science/character-encoding.html",
-      "/posts/chromatography/cell-model.html"
+      "/articles/computer-science/character-encoding.html",
+      "/articles/chromatography/cell-model.html"
     ]
   }
 ]
