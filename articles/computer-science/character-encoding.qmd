@@ -8,6 +8,16 @@ date: 2025-11-11
 format: html
 ---
 
+The first time I dug deeper into this topic was when I encountered a program that would
+consistently print weird characters when reading data from a file.
+In effect, this was pretty similar to opening a UTF-8 encoded file in Microsoft Excel by double clicking.
+It will not detect the encoding correctly (assume e.g. cp1252) if the special characters appear sparingly and late in the file.
+Anyway, that was an interesting rabbit hole of encodings and byte-order marks to explore.
+I hope you enjoy this short article.
+
+
+## Everything is Numbers
+
 Computers work with **bits** (binary digits) - zeroes and ones - how can they work with text?
 
 Well, it's quite simple - computers know how to represent numbers.
@@ -135,8 +145,13 @@ However, this is not recommended for UTF-8 encoded files, where it can be detect
 So to sum up, an encoding is a mapping of characters to numbers (the reverse is decoding).
 Unicode is a universal encoding that has significantly simplifed working
 with character encodings with UTF-8 becoming the standard format on the web.
+Knowing the encoding of a file is crucial for making sense of its contents.
 
 One final thing I learned about Unicode is that there actually are undefined regions
 in the standard, reserved for private use [Private Use Areas](https://en.wikipedia.org/wiki/Private_Use_Areas).
 So, not entirely unversal after all...
 I guess things stay interesting!
+
+We did not go into any other topics regarding text representation on computers.
+C's NULL-terminated strings, Pascals fixed-length strings and other concepts like compression using Huffman coding etc.
+Maybe we'll get there another time.
