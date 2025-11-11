@@ -1,6 +1,7 @@
 ---
 title: "Character Encoding"
 description: "Introduction to character encoding"
+image: character-encoding-img/encoding.jpg
 categories:
     - "Computer Science"
 date: 2025-11-11
