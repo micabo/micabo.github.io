@@ -4,7 +4,7 @@
     "href": "articles.html",
     "title": "Articles",
     "section": "",
-    "text": "I hope you enjoy this content!\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nCharacter Encoding\n\n\n\nComputer Science\n\n\n\nIntroduction to character encoding\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nThe Cell Model of Chromatography\n\n\n\nChemistry\n\nSimulation\n\n\n\nBasic exploration of the cell model for chromatography\n\n\n\n\n\nNov 10, 2025\n\n\n\n\n\nNo matching items"
+    "text": "I hope you enjoy this content!\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nStumbling into Finance\n\n\n\nFinance\n\n\n\nA first venture into finance\n\n\n\n\n\nNov 12, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nCharacter Encoding\n\n\n\nComputer Science\n\n\n\nIntroduction to character encoding\n\n\n\n\n\nNov 11, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nThe Cell Model of Chromatography\n\n\n\nChemistry\n\nSimulation\n\n\n\nBasic exploration of the cell model for chromatography\n\n\n\n\n\nNov 10, 2025\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -12,48 +12,6 @@
     "title": "Welcome",
     "section": "",
     "text": "Hi, welcome to my site.\nI will be building this website using quarto. My intent is to write short articles on things I stumble upon and find interesting. These articles may just be a write-up of the material for myself, but most of the time there will be a didactic element to them.\nYou can also check out my GitHub here. No, it’s not very up-to-date and does not contain many projects since my programming is mostly done professionally."
-  },
-  {
-    "objectID": "articles/computer-science/character-encoding.html",
-    "href": "articles/computer-science/character-encoding.html",
-    "title": "Character Encoding",
-    "section": "",
-    "text": "The first time I dug deeper into this topic was when I encountered a program that would consistently print weird characters when reading data from a file. In effect, this was pretty similar to opening a UTF-8 encoded file in Microsoft Excel by double clicking. It will not detect the encoding correctly (assume e.g. cp1252) if the special characters appear sparingly and late in the file. Anyway, that was an interesting rabbit hole of encodings and byte-order marks to explore. I hope you enjoy this short article."
-  },
-  {
-    "objectID": "articles/computer-science/character-encoding.html#everything-is-numbers",
-    "href": "articles/computer-science/character-encoding.html#everything-is-numbers",
-    "title": "Character Encoding",
-    "section": "Everything is Numbers",
-    "text": "Everything is Numbers\nComputers work with bits (binary digits) - zeroes and ones - how can they work with text?\nWell, it’s quite simple - computers know how to represent numbers. So we’ll just assign a number to each character. This process is called ‘encoding’.\nIs it quite so simple? Well no, there’s a bit more to it. Let’s find out."
-  },
-  {
-    "objectID": "articles/computer-science/character-encoding.html#ascii",
-    "href": "articles/computer-science/character-encoding.html#ascii",
-    "title": "Character Encoding",
-    "section": "ASCII",
-    "text": "ASCII\nThe most influential character encoding might be ASCII (American Standard Code for Information Interchange, pronounced ‘asky’). The ASCII encoding is a 7-bit encoding i.e. it maps the numbers from 0 to 127 (\\(2^7-1\\)) to a character.\n\nprint(f\"decimal - bit-pattern - character\")\nfor i in range(89, 100):\n    print(f\"{i:^7} - {format(i, '07b'):^11} - {chr(i):^9}\")\n\ndecimal - bit-pattern - character\n  89    -   1011001   -     Y    \n  90    -   1011010   -     Z    \n  91    -   1011011   -     [    \n  92    -   1011100   -     \\    \n  93    -   1011101   -     ]    \n  94    -   1011110   -     ^    \n  95    -   1011111   -     _    \n  96    -   1100000   -     `    \n  97    -   1100001   -     a    \n  98    -   1100010   -     b    \n  99    -   1100011   -     c    \n\n\nThe ASCII encoding contains all characters used in the English language and additional control characters such as e.g. carriage return. Nowadays, using 7-bits seems a bit odd, but this happened before a byte was standardized to 8-bits. Today the ASCII encoding looks the same, just with an additional ‘0’ prefixed to each bit-pattern."
-  },
-  {
-    "objectID": "articles/computer-science/character-encoding.html#extended-ascii-encodings",
-    "href": "articles/computer-science/character-encoding.html#extended-ascii-encodings",
-    "title": "Character Encoding",
-    "section": "Extended ASCII Encodings",
-    "text": "Extended ASCII Encodings\nAs most computers work with an 8-bit byte, people started to use the additional bit (=&gt; 128 additional bit-patterns) to encode more characters. In western Europe this resulted in encodings like Windows-1252 or Latin-1 to represent letters such as Ü (11011100 in Latin-1). In other parts of the world, other language-specific encodings arose (see for example TSCII etc.). This lead to a confusing situation where the same bit-pattern could stand for very different things.\n\nchar_as_byte = \"Ü\".encode(encoding=\"latin_1\")\nchar_as_int = int.from_bytes(char_as_byte, byteorder=\"little\")\n# note: byteorder does not matter for this encoding\nprint(f\"Ü is {char_as_int:08b}\")\n\nÜ is 11011100"
-  },
-  {
-    "objectID": "articles/computer-science/character-encoding.html#unicode",
-    "href": "articles/computer-science/character-encoding.html#unicode",
-    "title": "Character Encoding",
-    "section": "Unicode",
-    "text": "Unicode\nUnicode is a universal encoding that supports all languages, symbols and even emojis. It maps each character to an abstract unicode code point often denoted U+&lt;hexadeximal number&gt;.\n\ncharacters = ['A', 'Ü', '😆']\nprint(\"code point - character\")\nfor char in characters:\n    cp = f\"U+{ord(char):X}\"\n    print(f'{cp:^10}{char:^9}')\n\ncode point - character\n   U+41       A    \n   U+DC       Ü    \n U+1F606      😆    \n\n\nSo why do I call it an abstract code point? While the code point is a number, it does not specify how many bits are used to represent the actual characters. This is done by the Unicode Transformation Format (UTF). There are three commonly used formats: UTF-8, UTF-16 and UTF-32. The number signifies the minimal number of bits that is used to represent a character. These formats are ‘multi-byte’ formats i.e. they may use more than one byte to represent a character. UTF-32 always uses 4 bytes, UTF-16 uses at least 2 bytes but up to four and UTF-8 uses at least one byte but up to four. UTF-32 is pretty simple to understand as it always uses 4 bytes to represent a character. The only issue arising here is byte order, which we’ll talk about later.\n\nUTF-8\nThe most commonly used Unicode Transformation Format is UTF-8, which uses at least 8 bits and is compatible with ASCII in the lower 128 characters (this is how I got away using regular Python strings which are UTF-8 encoded in the ASCII section).\nIt works by encoding the number of following bytes in the first byte (start byte). If a byte starts with:\n\n0 is not followed by any more bytes =&gt; ASCII character\n110 followed by one more byte\n1110 followed by two more bytes\n11110 followed by three more bytes\n\nThe follow-bytes start with 10.\nThe ‘payload’ in an UTF-8 encoded character is everything except the start and follow byte prefixes. Let’s look at some examples:\nThe Character ‘A’ would be 01000001 (as in ASCII). Payload = 100 0001 = U+41.\nThe Character ‘Ü’ is encoded as 11000011 10011100\nPayload = 1101 1100 = U+DC.\nThe emoji 😅 is encoded as 11110000 10011111 10011000 10000101\nPayload = 0001 1111 0110 0000 0101 = U+1F606.\n\n\nByte-Order\nOne (last?) complication arises when using multiple bytes to represent a character: Which byte should be the first byte (in a message, in storage)? Computers and protocols use different byte-orders - so-called endianness.\nIn a little-endian system the character ‘Ü’ in UTF-8 encoding would be represented as 1100 1101, while it would be represented as 1101 1100 in a big-endian system. (In my opinion the terms are a bit confusing, imho it should be call ‘little-startian’ because we start with the lowest-value byte.)\nSome programs add a byte-order mark (BOM) to the start of their files. The mark is 0xFEFF. Should a program receive a BOM as FF and FE it would know that the bytes are transmitted in little-endian order. However, this is not recommended for UTF-8 encoded files, where it can be detected without BOM anyway."
-  },
-  {
-    "objectID": "articles/computer-science/character-encoding.html#summary",
-    "href": "articles/computer-science/character-encoding.html#summary",
-    "title": "Character Encoding",
-    "section": "Summary",
-    "text": "Summary\nSo to sum up, an encoding is a mapping of characters to numbers (the reverse is decoding). Unicode is a universal encoding that has significantly simplifed working with character encodings with UTF-8 becoming the standard format on the web. Knowing the encoding of a file is crucial for making sense of its contents.\nOne final thing I learned about Unicode is that there actually are undefined regions in the standard, reserved for private use Private Use Areas. So, not entirely unversal after all… I guess things stay interesting!\nWe did not go into any other topics regarding text representation on computers. C’s NULL-terminated strings, Pascals fixed-length strings and other concepts like compression using Huffman coding etc. Maybe we’ll get there another time."
   },
   {
     "objectID": "articles/chromatography/cell-model.html",
@@ -110,6 +68,97 @@
     "title": "The Cell Model of Chromatography",
     "section": "Decreasing Binding Affinity with Increasing Bound Molecules",
     "text": "Decreasing Binding Affinity with Increasing Bound Molecules\nLet’s suppose that the binding affinity of the stationary phase decreases with increasing number of bound molecules. Instead of using a ‘hard stop’ we will use a model where \\(K\\) decreases exponentially with ‘occupation’.\n\n# Define parameters\nn_cells = 100\nn_steps = 1_000\nn_molecules = 100_000\nK = 4\n\ndef frac_bound(n_bound):\n    # Reform K to a fractional entity - now also depending on loading\n    frac_bound = K / (np.exp(n_bound/30_000) + K)\n    return frac_bound\n\n# Initial state (zero everywhere)\nstationary_phase = np.zeros(n_cells)\nmobile_phase = np.zeros(n_cells + n_steps)\nmax_bound_molecules = np.zeros(n_steps + 1)\nsum_bound_molecules = np.zeros(n_steps + 1)\n\n# Loading of mobile phase in cell just before the stationary phase\nmobile_phase[n_cells] = n_molecules\n\nfor step in range(1, n_steps + 1):\n    # Record some information about the column\n    max_bound_molecules[step] = np.max(stationary_phase)\n    sum_bound_molecules[step] = np.sum(stationary_phase)\n    # Equilibration\n    for cell in range(n_cells):\n        n_bound_old = stationary_phase[cell]\n        n_tot = n_bound_old + mobile_phase[cell + step]\n        n_bound = np.floor(n_tot * frac_bound(n_bound_old))\n        n_free = n_tot - n_bound\n        stationary_phase[cell] = n_bound\n        mobile_phase[cell + step] = n_free\n\nplt.plot(mobile_phase)\nplt.xlim(0, n_steps)\nplt.show()\n\n# Let's also have a look at the maximum number of bound molecules\nplt.plot(max_bound_molecules, color=\"orange\")\nplt.plot(sum_bound_molecules, color=\"green\", linestyle=\"dashed\")\nplt.title(\"Number of Bound Molecules\")\nplt.legend([\"max n_bound\", \"sum n_bound\"])\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nObservations\n\nDecreasing binding affinity leads to a tailing peak.\nDue to the way the simulation is run the initial loading of the column is very, very high. Let’s look at that in some more detail.\n\n\nplt.plot(max_bound_molecules, color=\"orange\")\nplt.plot(sum_bound_molecules, color=\"green\", linestyle=\"dashed\")\nplt.xlim(0, 100)\nplt.legend([\"max n_bound\", \"sum n_bound\"])\nplt.show()\n\n\n\n\n\n\n\n\nWe see the oscillating behaviour at the beginning. First there are no bound molecules so \\(f_{bound}\\) is high (0.8). In the next step the affinity is starkly decreased due to the high number of bound molecules. This is an issue in our model but does not affect the qualitative result. We can smooth this behaviour out a bit in a further iteration of the model.\n\n# Define parameters\nn_cells = 100\nn_steps = 1_000\nn_molecules = 100_000\nK = 4\n\ndef frac_bound(n_bound):\n    # Reform K to a fractional entity - now also depending on loading\n    frac_bound = K / (np.exp(n_bound/30_000) + K)\n    return frac_bound\n\n# Initial state (zero everywhere)\nstationary_phase = np.zeros(n_cells)\nmobile_phase = np.zeros(n_cells + n_steps)\nmax_bound_molecules = np.zeros(n_steps + 1)\nsum_bound_molecules = np.zeros(n_steps + 1)\n\n# Loading of mobile phase in cell just before the stationary phase\nmobile_phase[n_cells] = n_molecules\n\nfor step in range(1, n_steps + 1):\n    # Record some information about the column\n    max_bound_molecules[step] = np.max(stationary_phase)\n    sum_bound_molecules[step] = np.sum(stationary_phase)\n    # Equilibration\n    for cell in range(n_cells):\n        n_bound = stationary_phase[cell]\n        n_tot = n_bound + mobile_phase[cell + step]\n        n_bound_new = np.floor(n_tot * frac_bound(n_bound))\n        # Interate on n_bound until consistent (give us some leeway +/- 1 molecule)\n        while abs(n_bound_new - n_bound) &gt; 1:\n            n_bound = (n_bound_new + n_bound) / 2 # introduces some damping\n            n_bound_new = np.floor(n_tot * frac_bound(n_bound))\n        n_free = n_tot - n_bound\n        stationary_phase[cell] = n_bound\n        mobile_phase[cell + step] = n_free\n\nplt.plot(mobile_phase)\nplt.xlim(0, n_steps)\nplt.show()\n\n# Let's also have a look at the maximum number of bound molecules\nplt.plot(max_bound_molecules, color=\"orange\")\nplt.plot(sum_bound_molecules, color=\"green\", linestyle=\"dashed\")\nplt.legend([\"max n_bound\", \"sum n_bound\"])\nplt.title(\"Number of Bound Molecules\")\nplt.xlim(0, 100)\nplt.show()"
+  },
+  {
+    "objectID": "articles/computer-science/character-encoding.html",
+    "href": "articles/computer-science/character-encoding.html",
+    "title": "Character Encoding",
+    "section": "",
+    "text": "The first time I dug deeper into this topic was when I encountered a program that would consistently print weird characters when reading data from a file. In effect, this was pretty similar to opening a UTF-8 encoded file in Microsoft Excel by double clicking. It will not detect the encoding correctly (assume e.g. cp1252) if the special characters appear sparingly and late in the file. Anyway, that was an interesting rabbit hole of encodings and byte-order marks to explore. I hope you enjoy this short article."
+  },
+  {
+    "objectID": "articles/computer-science/character-encoding.html#everything-is-numbers",
+    "href": "articles/computer-science/character-encoding.html#everything-is-numbers",
+    "title": "Character Encoding",
+    "section": "Everything is Numbers",
+    "text": "Everything is Numbers\nComputers work with bits (binary digits) - zeroes and ones - how can they work with text?\nWell, it’s quite simple - computers know how to represent numbers. So we’ll just assign a number to each character. This process is called ‘encoding’.\nIs it quite so simple? Well no, there’s a bit more to it. Let’s find out."
+  },
+  {
+    "objectID": "articles/computer-science/character-encoding.html#ascii",
+    "href": "articles/computer-science/character-encoding.html#ascii",
+    "title": "Character Encoding",
+    "section": "ASCII",
+    "text": "ASCII\nThe most influential character encoding might be ASCII (American Standard Code for Information Interchange, pronounced ‘asky’). The ASCII encoding is a 7-bit encoding i.e. it maps the numbers from 0 to 127 (\\(2^7-1\\)) to a character.\n\nprint(f\"decimal - bit-pattern - character\")\nfor i in range(89, 100):\n    print(f\"{i:^7} - {format(i, '07b'):^11} - {chr(i):^9}\")\n\ndecimal - bit-pattern - character\n  89    -   1011001   -     Y    \n  90    -   1011010   -     Z    \n  91    -   1011011   -     [    \n  92    -   1011100   -     \\    \n  93    -   1011101   -     ]    \n  94    -   1011110   -     ^    \n  95    -   1011111   -     _    \n  96    -   1100000   -     `    \n  97    -   1100001   -     a    \n  98    -   1100010   -     b    \n  99    -   1100011   -     c    \n\n\nThe ASCII encoding contains all characters used in the English language and additional control characters such as e.g. carriage return. Nowadays, using 7-bits seems a bit odd, but this happened before a byte was standardized to 8-bits. Today the ASCII encoding looks the same, just with an additional ‘0’ prefixed to each bit-pattern."
+  },
+  {
+    "objectID": "articles/computer-science/character-encoding.html#extended-ascii-encodings",
+    "href": "articles/computer-science/character-encoding.html#extended-ascii-encodings",
+    "title": "Character Encoding",
+    "section": "Extended ASCII Encodings",
+    "text": "Extended ASCII Encodings\nAs most computers work with an 8-bit byte, people started to use the additional bit (=&gt; 128 additional bit-patterns) to encode more characters. In western Europe this resulted in encodings like Windows-1252 or Latin-1 to represent letters such as Ü (11011100 in Latin-1). In other parts of the world, other language-specific encodings arose (see for example TSCII etc.). This lead to a confusing situation where the same bit-pattern could stand for very different things.\n\nchar_as_byte = \"Ü\".encode(encoding=\"latin_1\")\nchar_as_int = int.from_bytes(char_as_byte, byteorder=\"little\")\n# note: byteorder does not matter for this encoding\nprint(f\"Ü is {char_as_int:08b}\")\n\nÜ is 11011100"
+  },
+  {
+    "objectID": "articles/computer-science/character-encoding.html#unicode",
+    "href": "articles/computer-science/character-encoding.html#unicode",
+    "title": "Character Encoding",
+    "section": "Unicode",
+    "text": "Unicode\nUnicode is a universal encoding that supports all languages, symbols and even emojis. It maps each character to an abstract unicode code point often denoted U+&lt;hexadeximal number&gt;.\n\ncharacters = ['A', 'Ü', '😆']\nprint(\"code point - character\")\nfor char in characters:\n    cp = f\"U+{ord(char):X}\"\n    print(f'{cp:^10}{char:^9}')\n\ncode point - character\n   U+41       A    \n   U+DC       Ü    \n U+1F606      😆    \n\n\nSo why do I call it an abstract code point? While the code point is a number, it does not specify how many bits are used to represent the actual characters. This is done by the Unicode Transformation Format (UTF). There are three commonly used formats: UTF-8, UTF-16 and UTF-32. The number signifies the minimal number of bits that is used to represent a character. These formats are ‘multi-byte’ formats i.e. they may use more than one byte to represent a character. UTF-32 always uses 4 bytes, UTF-16 uses at least 2 bytes but up to four and UTF-8 uses at least one byte but up to four. UTF-32 is pretty simple to understand as it always uses 4 bytes to represent a character. The only issue arising here is byte order, which we’ll talk about later.\n\nUTF-8\nThe most commonly used Unicode Transformation Format is UTF-8, which uses at least 8 bits and is compatible with ASCII in the lower 128 characters (this is how I got away using regular Python strings which are UTF-8 encoded in the ASCII section).\nIt works by encoding the number of following bytes in the first byte (start byte). If a byte starts with:\n\n0 is not followed by any more bytes =&gt; ASCII character\n110 followed by one more byte\n1110 followed by two more bytes\n11110 followed by three more bytes\n\nThe follow-bytes start with 10.\nThe ‘payload’ in an UTF-8 encoded character is everything except the start and follow byte prefixes. Let’s look at some examples:\nThe Character ‘A’ would be 01000001 (as in ASCII). Payload = 100 0001 = U+41.\nThe Character ‘Ü’ is encoded as 11000011 10011100\nPayload = 1101 1100 = U+DC.\nThe emoji 😅 is encoded as 11110000 10011111 10011000 10000101\nPayload = 0001 1111 0110 0000 0101 = U+1F606.\n\n\nByte-Order\nOne (last?) complication arises when using multiple bytes to represent a character: Which byte should be the first byte (in a message, in storage)? Computers and protocols use different byte-orders - so-called endianness.\nIn a little-endian system the character ‘Ü’ in UTF-8 encoding would be represented as 1100 1101, while it would be represented as 1101 1100 in a big-endian system. (In my opinion the terms are a bit confusing, imho it should be call ‘little-startian’ because we start with the lowest-value byte.)\nSome programs add a byte-order mark (BOM) to the start of their files. The mark is 0xFEFF. Should a program receive a BOM as FF and FE it would know that the bytes are transmitted in little-endian order. However, this is not recommended for UTF-8 encoded files, where it can be detected without BOM anyway."
+  },
+  {
+    "objectID": "articles/computer-science/character-encoding.html#summary",
+    "href": "articles/computer-science/character-encoding.html#summary",
+    "title": "Character Encoding",
+    "section": "Summary",
+    "text": "Summary\nSo to sum up, an encoding is a mapping of characters to numbers (the reverse is decoding). Unicode is a universal encoding that has significantly simplifed working with character encodings with UTF-8 becoming the standard format on the web. Knowing the encoding of a file is crucial for making sense of its contents.\nOne final thing I learned about Unicode is that there actually are undefined regions in the standard, reserved for private use Private Use Areas. So, not entirely unversal after all… I guess things stay interesting!\nWe did not go into any other topics regarding text representation on computers. C’s NULL-terminated strings, Pascals fixed-length strings and other concepts like compression using Huffman coding etc. Maybe we’ll get there another time."
+  },
+  {
+    "objectID": "articles/finance/stumbling-into-finance.html",
+    "href": "articles/finance/stumbling-into-finance.html",
+    "title": "Stumbling into Finance",
+    "section": "",
+    "text": "I’ve never been someone who was very interested in finance. I guess that came from growing-up in a lower middle class, christian household. Money was always an issue and those who had it, were a bit evil. What is more, money was something real - it paid for food, rent, books - the idea of making money by investing money seemed absurd.\nI recently took a very introductory course on finance on edX.org called Finance for Everyone. Although the course was a bit slow-paced it still showed me, that I was missing the basics - or at least - was not aware of the implications. This course (Introduction to Corporate Finance) was an excellent follow-up.\nLet’s go over the basics."
+  },
+  {
+    "objectID": "articles/finance/stumbling-into-finance.html#time-value-of-money-tvm",
+    "href": "articles/finance/stumbling-into-finance.html#time-value-of-money-tvm",
+    "title": "Stumbling into Finance",
+    "section": "Time Value of Money (TVM)",
+    "text": "Time Value of Money (TVM)\nLet’s just assume that money does have some value. The time-value-of-money is a tool to compare different ways to deal with your money by bringing things you will spend/gain now and things you spend/gain in the future on an equal footing.\nFor this article well assume a constant, positive rate of return \\(r\\) and no inflation."
+  },
+  {
+    "objectID": "articles/finance/stumbling-into-finance.html#future-value-and-compounding",
+    "href": "articles/finance/stumbling-into-finance.html#future-value-and-compounding",
+    "title": "Stumbling into Finance",
+    "section": "Future Value and Compounding",
+    "text": "Future Value and Compounding\nThe future value is a pretty simple concept everyone’s familiar with. If you have money in the bank the bank pays you a (nowadays very small) rate of return per period (e.g. a year) expressed in precentage. So £100 today will be \\(£100 \\cdot (1 + r)\\) one time period from now.\nWhen left for multiple periods \\(n\\) the interest will compound: \\(£100 \\cdot (1 + r)^n\\). Expressed generally, the future value (FV) of an amount today (present value, PV) will be:\n\\[\nFV = PV \\cdot (1 + r)^n.\n\\]\n\nimport matplotlib.pyplot as plt\n\nPV = 100\nyears = range(0, 11)\nrates = (0.01, 0.05, 0.10)\nFV = [[PV * (1 + r) ** y for y in years] for r in rates]\n\nfor trace in FV:\n    plt.plot(trace)\nplt.title(\"Compounding\")\nplt.xlabel(\"Time /years\")\nplt.ylabel(\"Value /£\")\nplt.legend([\"1%\", \"5%\", \"10%\"])\nplt.show()\n\n\n\n\n\n\n\n\nSo far so good."
+  },
+  {
+    "objectID": "articles/finance/stumbling-into-finance.html#present-value-and-discounting",
+    "href": "articles/finance/stumbling-into-finance.html#present-value-and-discounting",
+    "title": "Stumbling into Finance",
+    "section": "Present Value and Discounting",
+    "text": "Present Value and Discounting\nWe can also turn the reasoning around and calculate the present value of something we will get in the future.\n\\[\nPV = \\frac{FV}{(1 + r)^n}\n\\]\nThe important thing to realize is, that it allows us to compare a future gain to a gain in the present. E.g. if someone told me they’d give me £102 in one year. What would that be worth to me now? It depends on the rate of interest. If I could have £100 now and deposit it in a bank at 2% interest, I’d have £102 in a year. Therefore, the gain of £102 in a year is equivalent to receiving £100 now.\nWe obtained the present value by discounting the future value with an interest rate we could obtain (somewhere) for the investment now."
+  },
+  {
+    "objectID": "articles/finance/stumbling-into-finance.html#cashflows",
+    "href": "articles/finance/stumbling-into-finance.html#cashflows",
+    "title": "Stumbling into Finance",
+    "section": "Cashflows",
+    "text": "Cashflows\nThis situation can be generalized to multiple cashflows \\(C_i\\) (payments), to obtain the present value we simply need to discount each cashflow by the appropriate amount \\(\\frac{C_i}{(1+r)^i}\\).\n\\[\nPV = \\frac{C_1}{(1+r)} + \\dots + \\frac{C_n}{(1+r)^n} = \\sum_{i=1}^n \\frac{C_i}{(1+r)^i}\n\\]\nNote that by convention the first cashflow occurs one time period from now. We need to keep this in mind when applying the formula to real world problems.\nBased on this general formula we can derive some special cases:\n\nPerpetuity\nGrowth Perpetuity\nAnnuity\n\n\nPerpetuity\nAssume the cashflows will occur indefinitely and be constant \\(C\\), the formula will simplify to:\n\\[\nPV_p = \\lim_{n \\to \\infty} \\left[\\frac{C}{(1+r)} + \\dots + \\frac{C}{(1+r)^n} \\right] = \\frac{C}{r}\n\\]\n\n\nGrowth Perpetuity\nAssume that the cashflows will occur indefinitely and grow by \\((1+g)\\) each time.\n\\[\nPV_g = \\lim_{n \\to \\infty} \\left[\\frac{C}{(1+r)} + \\frac{C \\cdot (1+g)}{(1+r)^2} + ... \\right] = \\frac{C}{r - g}\n\\]\n\n\nAnnuity\nAssume constant cashflows but a fixed time period \\(n\\) - either we use the general formula directly or we can modify the perpetuity formula.\n\\[\nPV_a = \\frac{C}{r} \\left[ 1 - \\frac{1}{(1 + r)^{n}} \\right]\n\\]"
+  },
+  {
+    "objectID": "articles/finance/stumbling-into-finance.html#examples",
+    "href": "articles/finance/stumbling-into-finance.html#examples",
+    "title": "Stumbling into Finance",
+    "section": "Examples",
+    "text": "Examples\n\nValue of a Bond\nWhat’s the (present) value of a bond that will pay £50 each year for 10 years when the ‘market’ interest rate is 2%?\n\nr = 0.02\nC = 50\n\n# using the general formula\nPV = sum([C*(1 + r)**(-i) for i in range(1, 11)])\nprint(\"£\", round(PV))\n\n£ 449\n\n\nWhat value would the bond have, if the interest rate was higher?\n\nr = 0.05\nC = 50\n\n# using the general formula\nPV = sum([C*(1 + r)**(-i) for i in range(1, 11)])\nprint(\"£\", round(PV))\n\n£ 386\n\n\nAs we can see, the (present) value given a higher interest rate would be lower.\n\n\nValue of a Loan\nAlice takes out a loan of £100’000 from a bank. The interest rate on the loan is 5% and Alice will pay back the money in 10 equal, yearly installments. What would she pay?\n\nr = 0.05\nn = 10\n\nPV = 100_000\n\nC = PV * r / (1 - (1 + r)**(-n))\nprint(\"Payments:\", round(C))\n\n# let's double check that this would work out to\n# a PV 100'000 for the bank using the general formula\nPV_B = sum([C*(1 + r)**(-i) for i in range(1, 11)])\nprint(\"PV:\", round(PV_B))\n\nPayments: 12950\nPV: 100000\n\n\nSo why would a bank do this? Well apart from not actually having to have the money they lend you, they will lend you the money for a higher interest rate than they could get investing it elsewhere.\n\nr_A = 0.05\nr_B = 0.02\nn = 10\n\nPV_A = 100_000\n\nC = PV_A * r_A / (1 - (1 + r_A)**(-n))\n\n# let's see what that looks like for the bank\nPV_B = sum([C*(1 + r_B)**(-i) for i in range(1, 11)])\nprint(\"Value for the bank:\", round(PV_B))\nprint(\"Gain:\", round(PV_B - PV_A))\n\nValue for the bank: 116329\nGain: 16329\n\n\nBy lending £100’000 to Alice the bank effectively gained £16’329 in present value."
+  },
+  {
+    "objectID": "articles/finance/stumbling-into-finance.html#summary",
+    "href": "articles/finance/stumbling-into-finance.html#summary",
+    "title": "Stumbling into Finance",
+    "section": "Summary",
+    "text": "Summary\nThe TVM gives us a tool to reason about financial investments by taking time and interest into account. Payments in the future decrease in (present) value the higher the interest rate is because of discounting.\nThere is so much more to discuss in this space, especially risk will be an interesting thing to talk about, but more on that later."
   },
   {
     "objectID": "about.html",

@@ -2,19 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://micabo.github.io/articles.html</loc>
-    <lastmod>2025-11-11T08:38:24.971Z</lastmod>
+    <lastmod>2025-11-11T14:52:50.559Z</lastmod>
   </url>
   <url>
     <loc>https://micabo.github.io/index.html</loc>
-    <lastmod>2025-11-11T08:30:13.082Z</lastmod>
-  </url>
-  <url>
-    <loc>https://micabo.github.io/articles/computer-science/character-encoding.html</loc>
-    <lastmod>2025-11-11T08:37:53.653Z</lastmod>
+    <lastmod>2025-11-11T08:44:46.717Z</lastmod>
   </url>
   <url>
     <loc>https://micabo.github.io/articles/chromatography/cell-model.html</loc>
-    <lastmod>2025-11-10T23:34:23.382Z</lastmod>
+    <lastmod>2025-11-11T14:52:50.559Z</lastmod>
+  </url>
+  <url>
+    <loc>https://micabo.github.io/articles/computer-science/character-encoding.html</loc>
+    <lastmod>2025-11-11T14:52:50.559Z</lastmod>
+  </url>
+  <url>
+    <loc>https://micabo.github.io/articles/finance/stumbling-into-finance.html</loc>
+    <lastmod>2025-11-11T21:57:24.851Z</lastmod>
   </url>
   <url>
     <loc>https://micabo.github.io/about.html</loc>

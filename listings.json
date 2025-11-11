@@ -2,6 +2,7 @@
   {
     "listing": "/articles.html",
     "items": [
+      "/articles/finance/stumbling-into-finance.html",
       "/articles/computer-science/character-encoding.html",
       "/articles/chromatography/cell-model.html"
     ]

@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-11-11">
-<meta name="description" content="Introduction to character encoding">
+<meta name="dcterms.date" content="2025-11-12">
+<meta name="description" content="A first venture into finance">
 
-<title>Character Encoding – micabo</title>
+<title>Stumbling into Finance – micabo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -186,13 +186,19 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#everything-is-numbers" id="toc-everything-is-numbers" class="nav-link active" data-scroll-target="#everything-is-numbers">Everything is Numbers</a></li>
-  <li><a href="#ascii" id="toc-ascii" class="nav-link" data-scroll-target="#ascii">ASCII</a></li>
-  <li><a href="#extended-ascii-encodings" id="toc-extended-ascii-encodings" class="nav-link" data-scroll-target="#extended-ascii-encodings">Extended ASCII Encodings</a></li>
-  <li><a href="#unicode" id="toc-unicode" class="nav-link" data-scroll-target="#unicode">Unicode</a>
+  <li><a href="#time-value-of-money-tvm" id="toc-time-value-of-money-tvm" class="nav-link active" data-scroll-target="#time-value-of-money-tvm">Time Value of Money (TVM)</a></li>
+  <li><a href="#future-value-and-compounding" id="toc-future-value-and-compounding" class="nav-link" data-scroll-target="#future-value-and-compounding">Future Value and Compounding</a></li>
+  <li><a href="#present-value-and-discounting" id="toc-present-value-and-discounting" class="nav-link" data-scroll-target="#present-value-and-discounting">Present Value and Discounting</a></li>
+  <li><a href="#cashflows" id="toc-cashflows" class="nav-link" data-scroll-target="#cashflows">Cashflows</a>
   <ul class="collapse">
-  <li><a href="#utf-8" id="toc-utf-8" class="nav-link" data-scroll-target="#utf-8">UTF-8</a></li>
-  <li><a href="#byte-order" id="toc-byte-order" class="nav-link" data-scroll-target="#byte-order">Byte-Order</a></li>
+  <li><a href="#perpetuity" id="toc-perpetuity" class="nav-link" data-scroll-target="#perpetuity">Perpetuity</a></li>
+  <li><a href="#growth-perpetuity" id="toc-growth-perpetuity" class="nav-link" data-scroll-target="#growth-perpetuity">Growth Perpetuity</a></li>
+  <li><a href="#annuity" id="toc-annuity" class="nav-link" data-scroll-target="#annuity">Annuity</a></li>
+  </ul></li>
+  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a>
+  <ul class="collapse">
+  <li><a href="#value-of-a-bond" id="toc-value-of-a-bond" class="nav-link" data-scroll-target="#value-of-a-bond">Value of a Bond</a></li>
+  <li><a href="#value-of-a-loan" id="toc-value-of-a-loan" class="nav-link" data-scroll-target="#value-of-a-loan">Value of a Loan</a></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
@@ -203,15 +209,15 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Character Encoding</h1>
+<h1 class="title">Stumbling into Finance</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Computer Science</div>
+    <div class="quarto-category">Finance</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Introduction to character encoding
+    A first venture into finance
   </div>
 </div>
 
@@ -222,7 +228,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 11, 2025</p>
+      <p class="date">November 12, 2025</p>
     </div>
   </div>
   
@@ -234,97 +240,167 @@ window.Quarto = {
 </header>
 
 
-<p>The first time I dug deeper into this topic was when I encountered a program that would consistently print weird characters when reading data from a file. In effect, this was pretty similar to opening a UTF-8 encoded file in Microsoft Excel by double clicking. It will not detect the encoding correctly (assume e.g.&nbsp;cp1252) if the special characters appear sparingly and late in the file. Anyway, that was an interesting rabbit hole of encodings and byte-order marks to explore. I hope you enjoy this short article.</p>
-<section id="everything-is-numbers" class="level2">
-<h2 class="anchored" data-anchor-id="everything-is-numbers">Everything is Numbers</h2>
-<p>Computers work with <strong>bits</strong> (binary digits) - zeroes and ones - how can they work with text?</p>
-<p>Well, it’s quite simple - computers know how to represent numbers. So we’ll just assign a number to each character. This process is called ‘encoding’.</p>
-<p>Is it quite so simple? Well no, there’s a bit more to it. Let’s find out.</p>
+<p>I’ve never been someone who was very interested in finance. I guess that came from growing-up in a lower middle class, christian household. Money was always an issue and those who had it, were a bit evil. What is more, money was something <em>real</em> - it paid for food, rent, books - the idea of making money by investing money seemed absurd.</p>
+<p>I recently took a <em>very</em> introductory course on finance on <a href="https://www.edx.org/">edX.org</a> called <a href="https://www.edx.org/learn/financial-literacy/the-university-of-michigan-finance-for-everyone-smart-tools-for-decision-making">Finance for Everyone</a>. Although the course was a bit slow-paced it still showed me, that I was missing the basics - or at least - was not aware of the implications. This course (<a href="https://www.edx.org/learn/corporate-finance/columbia-university-introduction-to-corporate-finance">Introduction to Corporate Finance</a>) was an excellent follow-up.</p>
+<p>Let’s go over the basics.</p>
+<section id="time-value-of-money-tvm" class="level2">
+<h2 class="anchored" data-anchor-id="time-value-of-money-tvm">Time Value of Money (TVM)</h2>
+<p>Let’s just assume that money does have some value. The time-value-of-money is a tool to compare different ways to deal with your money by bringing things you will spend/gain now and things you spend/gain in the future on an equal footing.</p>
+<p>For this article well assume a constant, positive <em>rate of return</em> <span class="math inline">\(r\)</span> and no inflation.</p>
 </section>
-<section id="ascii" class="level2">
-<h2 class="anchored" data-anchor-id="ascii">ASCII</h2>
-<p>The most influential character encoding might be ASCII (American Standard Code for Information Interchange, pronounced ‘asky’). The ASCII encoding is a 7-bit encoding i.e.&nbsp;it maps the numbers from 0 to 127 (<span class="math inline">\(2^7-1\)</span>) to a character.</p>
-<div id="10900fd3" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"decimal - bit-pattern - character"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">89</span>, <span class="dv">100</span>):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">:^7}</span><span class="ss"> - </span><span class="sc">{</span><span class="bu">format</span>(i, <span class="st">'07b'</span>)<span class="sc">:^11}</span><span class="ss"> - </span><span class="sc">{</span><span class="bu">chr</span>(i)<span class="sc">:^9}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>decimal - bit-pattern - character
-  89    -   1011001   -     Y    
-  90    -   1011010   -     Z    
-  91    -   1011011   -     [    
-  92    -   1011100   -     \    
-  93    -   1011101   -     ]    
-  94    -   1011110   -     ^    
-  95    -   1011111   -     _    
-  96    -   1100000   -     `    
-  97    -   1100001   -     a    
-  98    -   1100010   -     b    
-  99    -   1100011   -     c    </code></pre>
+<section id="future-value-and-compounding" class="level2">
+<h2 class="anchored" data-anchor-id="future-value-and-compounding">Future Value and Compounding</h2>
+<p>The future value is a pretty simple concept everyone’s familiar with. If you have money in the bank the bank pays you a (nowadays very small) rate of return per period (e.g.&nbsp;a year) expressed in precentage. So £100 today will be <span class="math inline">\(£100 \cdot (1 + r)\)</span> one time period from now.</p>
+<p>When left for multiple periods <span class="math inline">\(n\)</span> the interest will <em>compound</em>: <span class="math inline">\(£100 \cdot (1 + r)^n\)</span>. Expressed generally, the future value (FV) of an amount today (present value, PV) will be:</p>
+<p><span class="math display">\[
+FV = PV \cdot (1 + r)^n.
+\]</span></p>
+<div id="db07a796" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>PV <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">11</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>rates <span class="op">=</span> (<span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.10</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>FV <span class="op">=</span> [[PV <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> r) <span class="op">**</span> y <span class="cf">for</span> y <span class="kw">in</span> years] <span class="cf">for</span> r <span class="kw">in</span> rates]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> trace <span class="kw">in</span> FV:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    plt.plot(trace)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Compounding"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Time /years"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Value /£"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">"1%"</span>, <span class="st">"5%"</span>, <span class="st">"10%"</span>])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="stumbling-into-finance_files/figure-html/cell-2-output-1.png" width="593" height="449" class="figure-img"></p>
+</figure>
 </div>
 </div>
-<p>The ASCII encoding contains all characters used in the English language and additional <em>control</em> characters such as e.g.&nbsp;carriage return. Nowadays, using 7-bits seems a bit odd, but this happened before a byte was standardized to 8-bits. Today the ASCII encoding looks the same, just with an additional ‘0’ prefixed to each bit-pattern.</p>
+</div>
+<p>So far so good.</p>
 </section>
-<section id="extended-ascii-encodings" class="level2">
-<h2 class="anchored" data-anchor-id="extended-ascii-encodings">Extended ASCII Encodings</h2>
-<p>As most computers work with an 8-bit byte, people started to use the additional bit (=&gt; 128 additional bit-patterns) to encode more characters. In western Europe this resulted in encodings like Windows-1252 or Latin-1 to represent letters such as Ü (<code>11011100</code> in Latin-1). In other parts of the world, other language-specific encodings arose (see for example <a href="https://en.wikipedia.org/wiki/Tamil_Script_Code_for_Information_Interchange">TSCII</a> etc.). This lead to a confusing situation where the same bit-pattern could stand for very different things.</p>
-<div id="88ff56b4" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>char_as_byte <span class="op">=</span> <span class="st">"Ü"</span>.encode(encoding<span class="op">=</span><span class="st">"latin_1"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>char_as_int <span class="op">=</span> <span class="bu">int</span>.from_bytes(char_as_byte, byteorder<span class="op">=</span><span class="st">"little"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># note: byteorder does not matter for this encoding</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ü is </span><span class="sc">{</span>char_as_int<span class="sc">:08b}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Ü is 11011100</code></pre>
-</div>
-</div>
+<section id="present-value-and-discounting" class="level2">
+<h2 class="anchored" data-anchor-id="present-value-and-discounting">Present Value and Discounting</h2>
+<p>We can also turn the reasoning around and calculate the present value of something we will get in the future.</p>
+<p><span class="math display">\[
+PV = \frac{FV}{(1 + r)^n}
+\]</span></p>
+<p>The important thing to realize is, that it allows us to <strong>compare a future gain to a gain in the present</strong>. E.g. if someone told me they’d give me £102 in one year. What would that be worth to me <strong>now</strong>? It depends on the rate of interest. If I could have £100 <strong>now</strong> and deposit it in a bank at 2% interest, I’d have £102 in a year. Therefore, the gain of £102 in a year is equivalent to receiving £100 now.</p>
+<p>We obtained the present value by <em>discounting</em> the future value with an interest rate we could obtain (somewhere) for the investment now.</p>
 </section>
-<section id="unicode" class="level2">
-<h2 class="anchored" data-anchor-id="unicode">Unicode</h2>
-<p>Unicode is a universal encoding that supports all languages, symbols and even emojis. It maps each character to an abstract <em>unicode code point</em> often denoted <code>U+&lt;hexadeximal number&gt;</code>.</p>
-<div id="71df7773" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>characters <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'Ü'</span>, <span class="st">'😆'</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"code point - character"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> char <span class="kw">in</span> characters:</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    cp <span class="op">=</span> <span class="ss">f"U+</span><span class="sc">{</span><span class="bu">ord</span>(char)<span class="sc">:X}</span><span class="ss">"</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>cp<span class="sc">:^10}{</span>char<span class="sc">:^9}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>code point - character
-   U+41       A    
-   U+DC       Ü    
- U+1F606      😆    </code></pre>
-</div>
-</div>
-<p>So why do I call it an <em>abstract</em> code point? While the code point is a number, it does not specify how many bits are used to represent the actual characters. This is done by the Unicode Transformation Format (<strong>UTF</strong>). There are three commonly used formats: UTF-8, UTF-16 and UTF-32. The number signifies the minimal number of bits that is used to represent a character. These formats are ‘multi-byte’ formats i.e.&nbsp;they may use more than one byte to represent a character. UTF-32 always uses 4 bytes, UTF-16 uses at least 2 bytes but up to four and UTF-8 uses at least one byte but up to four. UTF-32 is pretty simple to understand as it always uses 4 bytes to represent a character. The only issue arising here is byte order, which we’ll talk about later.</p>
-<section id="utf-8" class="level3">
-<h3 class="anchored" data-anchor-id="utf-8">UTF-8</h3>
-<p>The most commonly used Unicode Transformation Format is <strong>UTF-8</strong>, which uses at least 8 bits and is compatible with ASCII in the lower 128 characters (this is how I got away using regular Python strings which are UTF-8 encoded in the ASCII section).</p>
-<p>It works by encoding the number of following bytes in the first byte (start byte). If a byte starts with:</p>
+<section id="cashflows" class="level2">
+<h2 class="anchored" data-anchor-id="cashflows">Cashflows</h2>
+<p>This situation can be generalized to multiple cashflows <span class="math inline">\(C_i\)</span> (payments), to obtain the present value we simply need to discount each cashflow by the appropriate amount <span class="math inline">\(\frac{C_i}{(1+r)^i}\)</span>.</p>
+<p><span class="math display">\[
+PV = \frac{C_1}{(1+r)} + \dots + \frac{C_n}{(1+r)^n} = \sum_{i=1}^n \frac{C_i}{(1+r)^i}
+\]</span></p>
+<p>Note that by convention the first cashflow occurs one time period from now. We need to keep this in mind when applying the formula to real world problems.</p>
+<p>Based on this general formula we can derive some special cases:</p>
 <ul>
-<li><code>0</code> is not followed by any more bytes =&gt; ASCII character</li>
-<li><code>110</code> followed by one more byte</li>
-<li><code>1110</code> followed by two more bytes</li>
-<li><code>11110</code> followed by three more bytes</li>
+<li>Perpetuity</li>
+<li>Growth Perpetuity</li>
+<li>Annuity</li>
 </ul>
-<p>The follow-bytes start with <code>10</code>.</p>
-<p>The ‘payload’ in an UTF-8 encoded character is everything except the start and follow byte prefixes. Let’s look at some examples:</p>
-<p>The Character ‘A’ would be <span style="color:blue">0</span>1000001 (as in ASCII). Payload = 100 0001 = U+41.</p>
-<p>The Character ‘Ü’ is encoded as <span style="color:blue">110</span>00011 <span style="color:blue">10</span>011100</p>
-<p>Payload = 1101 1100 = U+DC.</p>
-<p>The emoji 😅 is encoded as <span style="color:blue">11110</span>000 <span style="color:blue">10</span>011111 <span style="color:blue">10</span>011000 <span style="color:blue">10</span>000101</p>
-<p>Payload = 0001 1111 0110 0000 0101 = U+1F606.</p>
+<section id="perpetuity" class="level3">
+<h3 class="anchored" data-anchor-id="perpetuity">Perpetuity</h3>
+<p>Assume the cashflows will occur indefinitely and be constant <span class="math inline">\(C\)</span>, the formula will simplify to:</p>
+<p><span class="math display">\[
+PV_p = \lim_{n \to \infty} \left[\frac{C}{(1+r)} + \dots + \frac{C}{(1+r)^n} \right] = \frac{C}{r}
+\]</span></p>
 </section>
-<section id="byte-order" class="level3">
-<h3 class="anchored" data-anchor-id="byte-order">Byte-Order</h3>
-<p>One (last?) complication arises when using multiple bytes to represent a character: Which byte should be the first byte (in a message, in storage)? Computers and protocols use different byte-orders - so-called endianness.</p>
-<p>In a little-endian system the character ‘Ü’ in UTF-8 encoding would be represented as <code>1100 1101</code>, while it would be represented as <code>1101 1100</code> in a big-endian system. (In my opinion the terms are a bit confusing, imho it should be call ‘little-startian’ because we start with the lowest-value byte.)</p>
-<p>Some programs add a byte-order mark (<strong>BOM</strong>) to the start of their files. The mark is <code>0xFEFF</code>. Should a program receive a BOM as <code>FF</code> and <code>FE</code> it would know that the bytes are transmitted in little-endian order. However, this is not recommended for UTF-8 encoded files, where it can be detected without BOM anyway.</p>
+<section id="growth-perpetuity" class="level3">
+<h3 class="anchored" data-anchor-id="growth-perpetuity">Growth Perpetuity</h3>
+<p>Assume that the cashflows will occur indefinitely and grow by <span class="math inline">\((1+g)\)</span> each time.</p>
+<p><span class="math display">\[
+PV_g = \lim_{n \to \infty} \left[\frac{C}{(1+r)} + \frac{C \cdot (1+g)}{(1+r)^2} + ... \right] = \frac{C}{r - g}
+\]</span></p>
+</section>
+<section id="annuity" class="level3">
+<h3 class="anchored" data-anchor-id="annuity">Annuity</h3>
+<p>Assume constant cashflows but a fixed time period <span class="math inline">\(n\)</span> - either we use the general formula directly or we can modify the perpetuity formula.</p>
+<p><span class="math display">\[
+PV_a = \frac{C}{r} \left[ 1 - \frac{1}{(1 + r)^{n}} \right]
+\]</span></p>
+</section>
+</section>
+<section id="examples" class="level2">
+<h2 class="anchored" data-anchor-id="examples">Examples</h2>
+<section id="value-of-a-bond" class="level3">
+<h3 class="anchored" data-anchor-id="value-of-a-bond">Value of a Bond</h3>
+<p>What’s the (present) value of a bond that will pay £50 each year for 10 years when the ‘market’ interest rate is 2%?</p>
+<div id="e047c969" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fl">0.02</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># using the general formula</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>PV <span class="op">=</span> <span class="bu">sum</span>([C<span class="op">*</span>(<span class="dv">1</span> <span class="op">+</span> r)<span class="op">**</span>(<span class="op">-</span>i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"£"</span>, <span class="bu">round</span>(PV))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>£ 449</code></pre>
+</div>
+</div>
+<p>What value would the bond have, if the interest rate was higher?</p>
+<div id="e75756e2" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># using the general formula</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>PV <span class="op">=</span> <span class="bu">sum</span>([C<span class="op">*</span>(<span class="dv">1</span> <span class="op">+</span> r)<span class="op">**</span>(<span class="op">-</span>i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)])</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"£"</span>, <span class="bu">round</span>(PV))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>£ 386</code></pre>
+</div>
+</div>
+<p>As we can see, the (present) value given a higher interest rate would be lower.</p>
+</section>
+<section id="value-of-a-loan" class="level3">
+<h3 class="anchored" data-anchor-id="value-of-a-loan">Value of a Loan</h3>
+<p>Alice takes out a loan of £100’000 from a bank. The interest rate on the loan is 5% and Alice will pay back the money in 10 equal, yearly installments. What would she pay?</p>
+<div id="45adbbd7" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>PV <span class="op">=</span> <span class="dv">100_000</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> PV <span class="op">*</span> r <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> (<span class="dv">1</span> <span class="op">+</span> r)<span class="op">**</span>(<span class="op">-</span>n))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Payments:"</span>, <span class="bu">round</span>(C))</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># let's double check that this would work out to</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># a PV 100'000 for the bank using the general formula</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>PV_B <span class="op">=</span> <span class="bu">sum</span>([C<span class="op">*</span>(<span class="dv">1</span> <span class="op">+</span> r)<span class="op">**</span>(<span class="op">-</span>i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)])</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"PV:"</span>, <span class="bu">round</span>(PV_B))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Payments: 12950
+PV: 100000</code></pre>
+</div>
+</div>
+<p>So why would a bank do this? Well apart from not actually having to have the money they lend you, they will lend you the money for a higher interest rate than they could get investing it elsewhere.</p>
+<div id="344d2380" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>r_A <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>r_B <span class="op">=</span> <span class="fl">0.02</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>PV_A <span class="op">=</span> <span class="dv">100_000</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> PV_A <span class="op">*</span> r_A <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> (<span class="dv">1</span> <span class="op">+</span> r_A)<span class="op">**</span>(<span class="op">-</span>n))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># let's see what that looks like for the bank</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>PV_B <span class="op">=</span> <span class="bu">sum</span>([C<span class="op">*</span>(<span class="dv">1</span> <span class="op">+</span> r_B)<span class="op">**</span>(<span class="op">-</span>i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)])</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Value for the bank:"</span>, <span class="bu">round</span>(PV_B))</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Gain:"</span>, <span class="bu">round</span>(PV_B <span class="op">-</span> PV_A))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Value for the bank: 116329
+Gain: 16329</code></pre>
+</div>
+</div>
+<p>By lending £100’000 to Alice the bank effectively gained £16’329 in present value.</p>
 </section>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>So to sum up, an encoding is a mapping of characters to numbers (the reverse is decoding). Unicode is a universal encoding that has significantly simplifed working with character encodings with UTF-8 becoming the standard format on the web. Knowing the encoding of a file is crucial for making sense of its contents.</p>
-<p>One final thing I learned about Unicode is that there actually are undefined regions in the standard, reserved for private use <a href="https://en.wikipedia.org/wiki/Private_Use_Areas">Private Use Areas</a>. So, not entirely unversal after all… I guess things stay interesting!</p>
-<p>We did not go into any other topics regarding text representation on computers. C’s NULL-terminated strings, Pascals fixed-length strings and other concepts like compression using Huffman coding etc. Maybe we’ll get there another time.</p>
+<p>The TVM gives us a tool to reason about financial investments by taking time and interest into account. Payments in the future decrease in (present) value the higher the interest rate is because of discounting.</p>
+<p>There is so much more to discuss in this space, especially risk will be an interesting thing to talk about, but more on that later.</p>
 
 
 </section>
