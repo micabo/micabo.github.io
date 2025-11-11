@@ -239,7 +239,7 @@ window.Quarto = {
 <section id="ascii" class="level2">
 <h2 class="anchored" data-anchor-id="ascii">ASCII</h2>
 <p>The most influential character encoding might be ASCII (American Standard Code for Information Interchange, pronounced ‘asky’). The ASCII encoding is a 7-bit encoding i.e.&nbsp;it maps the numbers from 0 to 127 (<span class="math inline">\(2^7-1\)</span>) to a character.</p>
-<div id="e7ba8c3b" class="cell" data-execution_count="1">
+<div id="74398fae" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"decimal - bit-pattern - character"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">89</span>, <span class="dv">100</span>):</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">:^7}</span><span class="ss"> - </span><span class="sc">{</span><span class="bu">format</span>(i, <span class="st">'07b'</span>)<span class="sc">:^11}</span><span class="ss"> - </span><span class="sc">{</span><span class="bu">chr</span>(i)<span class="sc">:^9}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -263,7 +263,7 @@ window.Quarto = {
 <section id="extended-ascii-encodings" class="level2">
 <h2 class="anchored" data-anchor-id="extended-ascii-encodings">Extended ASCII Encodings</h2>
 <p>As most computers work with an 8-bit byte, people started to use the additional bit (=&gt; 128 additional bit-patterns) to encode more characters. In western Europe this resulted in encodings like Windows-1252 or Latin-1 to represent letters such as Ü (<code>11011100</code> in Latin-1). In other parts of the world, other language-specific encodings arose (see for example <a href="https://en.wikipedia.org/wiki/Tamil_Script_Code_for_Information_Interchange">TSCII</a> etc.). This lead to a confusing situation where the same bit-pattern could stand for very different things.</p>
-<div id="51a24148" class="cell" data-execution_count="2">
+<div id="5211bb04" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>char_as_byte <span class="op">=</span> <span class="st">"Ü"</span>.encode(encoding<span class="op">=</span><span class="st">"latin_1"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>char_as_int <span class="op">=</span> <span class="bu">int</span>.from_bytes(char_as_byte, byteorder<span class="op">=</span><span class="st">"little"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># note: byteorder does not matter for this encoding</span></span>
@@ -276,7 +276,7 @@ window.Quarto = {
 <section id="unicode" class="level2">
 <h2 class="anchored" data-anchor-id="unicode">Unicode</h2>
 <p>Unicode is a universal encoding that supports all languages, symbols and even emojis. It maps each character to an abstract <em>unicode code point</em> often denoted <code>U+&lt;hexadeximal number&gt;</code>.</p>
-<div id="365caff5" class="cell" data-execution_count="3">
+<div id="16e52ebc" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>characters <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'Ü'</span>, <span class="st">'😆'</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"code point - character"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> char <span class="kw">in</span> characters:</span>
